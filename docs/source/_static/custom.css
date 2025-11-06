@@ -1,0 +1,195 @@
+/* ============================================================
+ * Custom Furo Enhancements for ENPM702
+ * ============================================================
+ * - Pseudocode admonition (Font Awesome icon)
+ * - Themed "Deductions (Flat)" table
+ * - Regular tables: black grid & header (light mode)
+ * - Full compatibility with Furo dark/light/auto modes
+ * ============================================================ */
+
+/* ------------------------------------------------------------
+ * 1) Import Font Awesome (v6.5) for icon support
+ * ------------------------------------------------------------ */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css");
+
+/* ------------------------------------------------------------
+ * 2) COLOR VARIABLES (light + dark + auto)
+ * ------------------------------------------------------------ */
+
+/* Light + default + auto-light */
+:root,
+[data-theme="light"],
+[data-theme="auto"] {
+  /* Pseudocode */
+  --furo-color-pseudocode-background: #f4f7f9;
+  --furo-color-pseudocode-title-background: #dbe4ee;
+  --furo-color-pseudocode-border: #3a6ea5;
+
+  /* Deductions Table */
+  --deductions-bg: #fff4f4;
+  --deductions-border: #b32424;
+  --deductions-header-bg: #ffe0e0;
+  --deductions-text: #3a0000;
+
+  /* Regular rubric tables (light) */
+  --rubric-border: #000000;
+  --rubric-header-bg: #000000;
+  --rubric-header-text: #ffffff;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --furo-color-pseudocode-background: #2a323d;
+  --furo-color-pseudocode-title-background: #384250;
+  --furo-color-pseudocode-border: #89a7ff;
+
+  --deductions-bg: #3a1e1e;
+  --deductions-border: #ff8080;
+  --deductions-header-bg: #502727;
+  --deductions-text: #ffeaea;
+
+  /* Regular rubric tables (dark) */
+  --rubric-border: #d0d0d0;
+  --rubric-header-bg: #2a2a2a;
+  --rubric-header-text: #ffffff;
+}
+
+/* Auto mode: follow system preference for dark */
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    --furo-color-pseudocode-background: #2a323d;
+    --furo-color-pseudocode-title-background: #384250;
+    --furo-color-pseudocode-border: #89a7ff;
+
+    --deductions-bg: #3a1e1e;
+    --deductions-border: #ff8080;
+    --deductions-header-bg: #502727;
+    --deductions-text: #ffeaea;
+
+    --rubric-border: #d0d0d0;
+    --rubric-header-bg: #2a2a2a;
+    --rubric-header-text: #ffffff;
+  }
+}
+
+/* ------------------------------------------------------------
+ * 3) PSEUDOCODE ADMONITION STYLING
+ * ------------------------------------------------------------ */
+
+.admonition.pseudocode {
+  background-color: var(--furo-color-pseudocode-background);
+  border-left: 0.25rem solid var(--furo-color-pseudocode-border);
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.admonition.pseudocode > .admonition-title {
+  background-color: var(--furo-color-pseudocode-title-background);
+  font-weight: 600;
+}
+
+/* Icon (Font Awesome) */
+.admonition.pseudocode > .admonition-title::before {
+  /* Remove Furo default icon mask */
+  mask: none !important;
+  -webkit-mask: none !important;
+  background: none !important;
+
+  /* Font Awesome glyph */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f121"; /* fa-code */
+  color: var(--furo-color-pseudocode-border);
+
+  /* Tight spacing & alignment */
+  display: inline-block;
+  width: 1rem;
+  line-height: 1.1rem;
+  text-align: center;
+  margin-right: 0.7rem;
+  margin-left: -2.0rem;
+  position: relative;
+  top: 0.15rem;
+}
+
+.admonition.pseudocode p {
+  margin-bottom: 0.4em;
+}
+
+/* ------------------------------------------------------------
+ * 4) CODE BLOCK REFINEMENT (minor)
+ * ------------------------------------------------------------ */
+
+pre {
+  border-radius: 0.25rem;
+  padding: 0.75em;
+  font-size: 0.95em;
+}
+
+/* ------------------------------------------------------------
+ * 5) DEDUCTIONS (FLAT) TABLE STYLING
+ * ------------------------------------------------------------ */
+/* Usage in RST:
+   .. list-table::
+      :class: deductions-table
+      ...
+*/
+
+table.deductions-table {
+  border: 2px solid var(--deductions-border);
+  border-collapse: collapse;
+  background-color: var(--deductions-bg);
+  color: var(--deductions-text);
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+table.deductions-table th,
+table.deductions-table td {
+  border: 1px solid var(--deductions-border);
+  padding: 0.5rem 0.75rem;
+}
+
+table.deductions-table th {
+  background-color: var(--deductions-header-bg);
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Subtle hover */
+table.deductions-table tr:hover td {
+  background-color: rgba(255, 0, 0, 0.05);
+}
+
+/* ------------------------------------------------------------
+ * 6) REGULAR TABLES (list-table/docutils) – BLACK GRID IN LIGHT MODE
+ * ------------------------------------------------------------ */
+/* Applies to all docutils tables except the themed deductions table.
+   Your Code Quality table will be affected by these rules. */
+
+table.docutils:not(.deductions-table) {
+  border: 1.5px solid var(--rubric-border);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.docutils:not(.deductions-table) th,
+table.docutils:not(.deductions-table) td {
+  border: 1px solid var(--rubric-border);
+  padding: 0.5rem 0.75rem;
+}
+
+table.docutils:not(.deductions-table) th {
+  background-color: var(--rubric-header-bg);
+  color: var(--rubric-header-text);
+  font-weight: 600;
+  text-align: left;
+}
+
+table.docutils:not(.deductions-table) tr:hover td {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* ------------------------------------------------------------
+ * 7) END OF CUSTOM STYLING
+ * ------------------------------------------------------------ */
