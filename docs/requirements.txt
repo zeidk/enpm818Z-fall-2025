@@ -19,7 +19,6 @@ sphinx-autodoc-typehints
 # Optional: improves docstring parsing and code rendering
 sphinxcontrib-htmlhelp
 sphinxcontrib-serializinghtml
-sphinx-fontawesome
 
 
 # sphinx>=7.3

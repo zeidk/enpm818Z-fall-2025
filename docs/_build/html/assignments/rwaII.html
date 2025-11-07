@@ -8,7 +8,7 @@
         <link rel="prefetch" href="../_static/enpm818Z-dark.png" as="image">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
-        <title>Assignment 2: Building a Keyframe-Based LiDAR Odometry Pipeline - ENPM818Z-FALL-2025 v1.0 documentation</title>
+        <title>Assignment 2 - ENPM818Z-FALL-2025 v1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -201,7 +201,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../assignments.html">Assignments</a><input aria-label="Toggle navigation of Assignments" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Assignment 2: Building a Keyframe-Based LiDAR Odometry Pipeline</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Assignment 2</a></li>
 </ul>
 </li>
 </ul>
@@ -246,39 +246,46 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="assignment-2-building-a-keyframe-based-lidar-odometry-pipeline">
-<h1>Assignment 2: Building a Keyframe-Based LiDAR Odometry Pipeline<a class="headerlink" href="#assignment-2-building-a-keyframe-based-lidar-odometry-pipeline" title="Link to this heading">¶</a></h1>
+          <section id="assignment-2">
+<h1>Assignment 2<a class="headerlink" href="#assignment-2" title="Link to this heading">¶</a></h1>
 <dl class="field-list simple">
-<dt class="field-odd">Course<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ENPM818Z — On-Road Automated Vehicles</p>
+<dt class="field-odd">Title<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Building a Keyframe-Based LiDAR Odometry Pipeline</p>
 </dd>
-<dt class="field-even">Topic<span class="colon">:</span></dt>
-<dd class="field-even"><p>L2C — SLAM for the Real World (Frontend)</p>
+<dt class="field-even">Course<span class="colon">:</span></dt>
+<dd class="field-even"><p>ENPM818Z — On-Road Automated Vehicles</p>
 </dd>
-<dt class="field-odd">Assigned<span class="colon">:</span></dt>
-<dd class="field-odd"><p>November 6, 2025</p>
+<dt class="field-odd">Topic<span class="colon">:</span></dt>
+<dd class="field-odd"><p>L2C — SLAM for the Real World (Frontend)</p>
 </dd>
-<dt class="field-even">Due<span class="colon">:</span></dt>
-<dd class="field-even"><p>November 18, 2025 (1.5 weeks)</p>
+<dt class="field-even">Assigned<span class="colon">:</span></dt>
+<dd class="field-even"><p>November 7, 2025</p>
 </dd>
-<dt class="field-odd">Total Points<span class="colon">:</span></dt>
-<dd class="field-odd"><p>30 pts</p>
+<dt class="field-odd">Due<span class="colon">:</span></dt>
+<dd class="field-odd"><p>November 19, 2025 (1.5 weeks)</p>
 </dd>
-<dt class="field-even">Language<span class="colon">:</span></dt>
-<dd class="field-even"><p>Python (ROS 2, Open3D, NumPy)</p>
+<dt class="field-even">Total Points<span class="colon">:</span></dt>
+<dd class="field-even"><p>30 pts</p>
+</dd>
+<dt class="field-odd">Language<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Python (ROS 2, Open3D)</p>
 </dd>
 </dl>
 <section id="objective">
-<h2>🎯 1. Objective<a class="headerlink" href="#objective" title="Link to this heading">¶</a></h2>
+<h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">¶</a></h2>
 <p>Build a simplified <strong>LiDAR odometry pipeline</strong> that estimates vehicle trajectory from raw point cloud data. You will implement two core concepts of modern SLAM systems:</p>
 <ul class="simple">
 <li><p><strong>Keyframe Selection</strong> – Decide which scans become keyframes to represent the map efficiently</p></li>
 <li><p><strong>Local Map Management</strong> – Maintain a sliding window of recent keyframes as the registration reference</p></li>
 </ul>
 <p>You will be provided with helper utilities and a complete starter package. Your task is to implement the <strong>core SLAM logic</strong> in two ROS 2 nodes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference external" href="https://drive.google.com/file/d/1iegtrsupj4XY0SIrvhmpgWKO9CifDmY9/view?usp=sharing">demo</a>.</p>
+</div>
 </section>
 <section id="background">
-<h2>📚 2. Background<a class="headerlink" href="#background" title="Link to this heading">¶</a></h2>
+<h2>2. Background<a class="headerlink" href="#background" title="Link to this heading">¶</a></h2>
 <p>In the lecture, we discussed why simple <strong>scan-to-scan matching</strong> is computationally expensive and prone to drift. A more robust approach, <strong>scan-to-local-map matching</strong>, aligns each incoming scan to a <strong>local submap</strong> built from several past keyframes.</p>
 <p>This assignment implements that approach:</p>
 <dl class="simple">
@@ -291,7 +298,7 @@
 </dl>
 </section>
 <section id="kitti-dataset-and-ros-2-bag-files">
-<h2>📂 3. KITTI Dataset and ROS 2 Bag Files<a class="headerlink" href="#kitti-dataset-and-ros-2-bag-files" title="Link to this heading">¶</a></h2>
+<h2>3. KITTI Dataset and ROS 2 Bag Files<a class="headerlink" href="#kitti-dataset-and-ros-2-bag-files" title="Link to this heading">¶</a></h2>
 <p>You will use <strong>KITTI Odometry Sequence 00</strong> — a standard benchmark sequence combining highway and urban driving, ideal for evaluating odometry and keyframe strategies.</p>
 <section id="dataset-overview">
 <h3>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Link to this heading">¶</a></h3>
@@ -331,9 +338,12 @@
 </section>
 <section id="ros-2-bag-files-provided">
 <h3>ROS 2 Bag Files Provided<a class="headerlink" href="#ros-2-bag-files-provided" title="Link to this heading">¶</a></h3>
-<p>Two pre-recorded bag files are provided to you:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Two pre-recorded bag files are provided to you: <a class="reference external" href="https://drive.google.com/drive/folders/1ni7jXjCE8NncyLBbYpta3CpqVkbWhFDU?usp=sharing">location</a>.</p>
+</div>
 <ol class="arabic simple">
-<li><p><strong>Development Dataset</strong> (<code class="docutils literal notranslate"><span class="pre">kitti_00_dev</span></code>) — First 1,000 frames (~800 MB)</p>
+<li><p><strong>Development Dataset</strong> (<code class="docutils literal notranslate"><span class="pre">kitti_00_dev</span></code>) — First 1,000 frames</p>
 <ul class="simple">
 <li><p>Use this for 90% of your development and testing</p></li>
 <li><p>Faster iteration, easier debugging</p></li>
@@ -341,7 +351,7 @@
 <li><p>Duration: ~100 seconds</p></li>
 </ul>
 </li>
-<li><p><strong>Full Dataset</strong> (<code class="docutils literal notranslate"><span class="pre">kitti_00_full</span></code>) — Complete 4,541 frames (~3.5 GB)</p>
+<li><p><strong>Full Dataset</strong> (<code class="docutils literal notranslate"><span class="pre">kitti_00_full</span></code>) — Complete 4,541 frames</p>
 <ul class="simple">
 <li><p>Use for final testing before submission</p></li>
 <li><p>Shows long-term behavior and drift accumulation</p></li>
@@ -402,8 +412,14 @@
 </section>
 </section>
 <section id="assignment-tasks">
-<h2>🛠️ 4. Assignment Tasks<a class="headerlink" href="#assignment-tasks" title="Link to this heading">¶</a></h2>
+<h2>4. Assignment Tasks<a class="headerlink" href="#assignment-tasks" title="Link to this heading">¶</a></h2>
 <p>You will implement <strong>two ROS 2 nodes</strong> in the provided <code class="docutils literal notranslate"><span class="pre">slam_frontend</span></code> package. The starter package includes templates with clear TODO sections showing exactly what you need to implement.</p>
+<p><strong>Important:</strong> You are provided with utility functions in:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">icp_utils.py</span></code> - ICP alignment (<code class="docutils literal notranslate"><span class="pre">align_clouds</span></code>, <code class="docutils literal notranslate"><span class="pre">downsample_cloud</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transform_utils.py</span></code> - SE(3) transformations (<code class="docutils literal notranslate"><span class="pre">pose_to_transform_matrix</span></code>, <code class="docutils literal notranslate"><span class="pre">transform_to_pose</span></code>, <code class="docutils literal notranslate"><span class="pre">compute_distance</span></code>, <code class="docutils literal notranslate"><span class="pre">compute_rotation_angle</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pointcloud_utils.py</span></code> - ROS↔Open3D conversions (<code class="docutils literal notranslate"><span class="pre">ros_to_open3d</span></code>, <code class="docutils literal notranslate"><span class="pre">open3d_to_ros</span></code>)</p></li>
+</ul>
 <section id="node-1-odometry-estimator-node">
 <h3>Node 1 — odometry_estimator_node<a class="headerlink" href="#node-1-odometry-estimator-node" title="Link to this heading">¶</a></h3>
 <p><strong>Purpose:</strong> Estimate robot pose and determine when to create new keyframes.</p>
@@ -420,68 +436,116 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">/tf</span></code> (tf2_msgs/TFMessage) — Broadcast <code class="docutils literal notranslate"><span class="pre">map</span> <span class="pre">→</span> <span class="pre">odom</span></code> transform</p></li>
 </ul>
 <p><strong>What You Implement:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">should_create_keyframe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_pose</span><span class="p">,</span> <span class="n">last_keyframe_pose</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Determine if current pose warrants a new keyframe</span>
-
-<span class="sd">    TODO: Implement keyframe selection logic</span>
-
-<span class="sd">    Steps:</span>
-<span class="sd">      1. Compute translation distance using compute_distance()</span>
-<span class="sd">      2. Compute rotation angle using compute_rotation_angle()</span>
-<span class="sd">      3. Return True if either threshold exceeded</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        bool: True if new keyframe should be created</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-</pre></div>
+<ul>
+<li><p><cite>should_create_keyframe(T_current, T_last_keyframe)</cite>: Decides whether the robot has moved far enough (in translation or rotation) from the last keyframe position to warrant creating a new keyframe. This prevents redundant keyframes when the robot is stationary or moving slowly.</p>
+<div class="pseudocode admonition">
+<p class="admonition-title">should_create_keyframe(T_current, T_last_keyframe)</p>
+<div class="line-block">
+<div class="line">INPUT: <span class="math notranslate nohighlight">\(T_{\text{current}}\)</span> (4x4 matrix), <span class="math notranslate nohighlight">\(T_{\text{last_keyframe}}\)</span> (4x4 matrix)</div>
+<div class="line">OUTPUT: Boolean</div>
+<div class="line"><br /></div>
+<div class="line">1) <span class="math notranslate nohighlight">\(d_{trans} \leftarrow \text{compute_distance}(T_{\text{current}}, T_{\text{last_keyframe}})\)</span></div>
+<div class="line">2) <span class="math notranslate nohighlight">\(d_{rot} \leftarrow \text{compute_rotation_angle}(T_{\text{current}}, T_{\text{last_keyframe}})\)</span></div>
+<div class="line">3) <strong>IF</strong> <span class="math notranslate nohighlight">\(d_{trans} &gt; \theta_{dist}\)</span> <strong>OR</strong> <span class="math notranslate nohighlight">\(d_{rot} &gt; \theta_{angle}\)</span> <strong>THEN</strong> <strong>RETURN</strong> <span class="math notranslate nohighlight">\(true\)</span></div>
+<div class="line">4) <strong>RETURN</strong> <span class="math notranslate nohighlight">\(false\)</span></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pointcloud_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Main processing loop - called for each new scan</span>
-
-<span class="sd">    TODO: Implement scan processing and odometry estimation</span>
-
-<span class="sd">    Steps:</span>
-<span class="sd">      1. Align scan to local map using align_clouds()</span>
-<span class="sd">      2. Update pose: self.current_pose = self.current_pose @ delta_T</span>
-<span class="sd">      3. Publish odometry, path, and TF</span>
-<span class="sd">      4. Check if new keyframe needed</span>
-<span class="sd">      5. If yes, publish keyframe</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-</pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">publish_keyframe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cloud_msg</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Create and publish new keyframe message</span>
-
-<span class="sd">    TODO: Implement keyframe publication</span>
-
-<span class="sd">    Steps:</span>
-<span class="sd">      1. Create Keyframe message</span>
-<span class="sd">      2. Set cloud and pose fields</span>
-<span class="sd">      3. Publish to /slam/new_keyframe</span>
-<span class="sd">      4. Update last_keyframe_pose</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-</pre></div>
+</li>
+<li><p><cite>pointcloud_callback(cloud_msg)</cite>: Main odometry estimation loop that processes each incoming LiDAR scan. Performs scan-to-scan matching to estimate relative motion, updates the robot’s global pose, and optionally refines the estimate using the local map. This function runs at 10 Hz with each new point cloud.</p>
+<div class="pseudocode admonition">
+<p class="admonition-title">pointcloud_callback(cloud_msg)</p>
+<div class="line-block">
+<div class="line">INPUT: cloud_msg (PointCloud2 message)</div>
+<div class="line"><br /></div>
+<div class="line">1) <span class="math notranslate nohighlight">\(P \leftarrow \text{ros_to_open3d}(\text{cloud_msg})\)</span>  // Convert ROS point cloud to Open3D format</div>
+<div class="line">2) <strong>IF</strong> <span class="math notranslate nohighlight">\(|P| &lt; 100\)</span> <strong>THEN</strong> RETURN  // Skip if too few points</div>
+<div class="line">3) <span class="math notranslate nohighlight">\(P_{\text{ds}} \leftarrow \text{downsample}(P, v_{\text{size}})\)</span>  // Reduce points for faster processing</div>
+<div class="line"><br /></div>
+<div class="line">4) <strong>IF</strong> first_scan <strong>THEN</strong>  // Initialize system on first scan</div>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(T_{\text{current}} \leftarrow I_{4\times 4}\)</span>  // Start at origin</div>
+<div class="line"><span class="math notranslate nohighlight">\(T_{\text{last_kf}} \leftarrow I_{4\times 4}\)</span>  // First keyframe at origin</div>
+<div class="line"><span class="math notranslate nohighlight">\(P_{\text{last}} \leftarrow P_{\text{ds}}\)</span>  // Store for next iteration</div>
+<div class="line">publish_keyframe(cloud_msg)  // First scan always becomes keyframe, publish to topic /slam/new_keyframe</div>
+<div class="line">publish_odometry() // publish to topic /odom</div>
+<div class="line">publish_path() // publish to topic /path</div>
+<div class="line">first_scan ← False</div>
+<div class="line">RETURN</div>
+<div class="line"><br /></div>
 </div>
-<p><strong>Algorithm Overview:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Initialize:
-  current_pose ← Identity matrix
-  last_keyframe_pose ← Identity matrix
-  Publish first scan as keyframe
-
-For each new scan:
-  ΔT ← ICP_Align(scan, local_map)
-  current_pose ← current_pose × ΔT
-
-  Publish odometry and path
-
-  If should_create_keyframe(current_pose, last_keyframe_pose):
-    Publish keyframe
-    last_keyframe_pose ← current_pose
-</pre></div>
+<div class="line">5) <span class="math notranslate nohighlight">\(\Delta T \leftarrow \text{ICP}(P_{\text{ds}}, P_{\text{last}})\)</span>  // Estimate motion between consecutive scans</div>
+<div class="line"><br /></div>
+<div class="line">6) <strong>IF</strong> <span class="math notranslate nohighlight">\(\|\Delta T_{[0:3,3]}\| &gt; \tau_{\text{max}}\)</span> <strong>OR</strong> <span class="math notranslate nohighlight">\(\|\Delta T_{[0:3,3]}\| &lt; \tau_{\text{min}}\)</span> <strong>THEN</strong>  // Check if ICP failed</div>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(\Delta T \leftarrow \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0.5 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>  // Use default forward motion</div>
+<div class="line"><br /></div>
 </div>
+<div class="line">7) <span class="math notranslate nohighlight">\(\Delta T_{[2,3]} \leftarrow \text{clamp}(\Delta T_{[2,3]}, -z_{\text{lim}}, z_{\text{lim}})\)</span>  // Limit vertical drift</div>
+<div class="line"><br /></div>
+<div class="line">8) <span class="math notranslate nohighlight">\(T_{\text{current}} \leftarrow T_{\text{current}} \cdot \Delta T\)</span>  // Chain transformation to update global pose</div>
+<div class="line"><br /></div>
+<div class="line">9) <strong>IF</strong> scan_count mod 5 = 0 <strong>AND</strong> local_map exists <strong>THEN</strong>  // Periodic map-based refinement</div>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(T_{\text{refined}} \leftarrow \text{ICP}(P_{\text{ds}}, \text{local_map}, T_{\text{current}})\)</span>  // Align to local map</div>
+<div class="line"><strong>IF</strong> fitness &gt; 0.5 <strong>AND</strong> <span class="math notranslate nohighlight">\(\|T_{\text{refined}[0:3,3]} - T_{\text{current}[0:3,3]}\| &lt; 2.0\)</span> <strong>THEN</strong>  // Validate refinement</div>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(T_{\text{refined}[2,3]} \leftarrow \text{clamp}(T_{\text{refined}[2,3]}, -2.0, 2.0)\)</span>  // Constrain Z</div>
+<div class="line"><span class="math notranslate nohighlight">\(T_{\text{current}} \leftarrow T_{\text{refined}}\)</span>  // Accept refined pose</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">10) <span class="math notranslate nohighlight">\(P_{\text{last}} \leftarrow P_{\text{ds}}\)</span>  // Update scan buffer for next iteration</div>
+<div class="line">11) publish_odometry(<span class="math notranslate nohighlight">\(T_{\text{current}}\)</span>)  // Broadcast current pose estimate</div>
+<div class="line">12) publish_path()  // Update trajectory visualization</div>
+<div class="line"><br /></div>
+<div class="line">13) <strong>IF</strong> should_create_keyframe(<span class="math notranslate nohighlight">\(T_{\text{current}}\)</span>, <span class="math notranslate nohighlight">\(T_{\text{last_kf}}\)</span>) <strong>THEN</strong>  // Check motion thresholds</div>
+<div class="line-block">
+<div class="line">publish_keyframe(cloud_msg)  // Add to keyframe set</div>
+<div class="line"><span class="math notranslate nohighlight">\(T_{\text{last_kf}} \leftarrow T_{\text{current}}\)</span>  // Update keyframe reference// Update keyframe reference</div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Why Convert to Open3D Format?</strong></p>
+<p>ROS PointCloud2 messages contain point clouds as <strong>raw byte arrays</strong> designed for network transport, not processing. The <cite>data</cite> field is essentially a serialized byte stream that needs to be decoded before use. Open3D provides:</p>
+<ol class="arabic simple">
+<li><p><strong>Fast ICP Implementation</strong>: Open3D’s ICP is written in C++ with Python bindings, achieving ~50-100ms per scan compared to 2-5 seconds for pure Python implementations.</p></li>
+<li><p><strong>Essential Point Cloud Operations</strong>:</p>
+<ul class="simple">
+<li><p>Voxel downsampling: <cite>voxel_down_sample()</cite></p></li>
+<li><p>KD-tree spatial indexing for nearest neighbors</p></li>
+<li><p>Direct matrix transformations: <cite>cloud.transform(T)</cite></p></li>
+<li><p>Simple merging: <cite>cloud1 + cloud2</cite></p></li>
+</ul>
+</li>
+<li><p><strong>Performance Critical for Real-time SLAM</strong>: Without Open3D’s optimized algorithms, the system would run at &lt;1 Hz instead of the required &gt;5 Hz.</p></li>
+<li><p><strong>Why Open3D over alternatives?</strong></p>
+<ul class="simple">
+<li><p><strong>PCL</strong>: More complex C++ API, harder Python integration</p></li>
+<li><p><strong>NumPy only</strong>: Would require implementing ICP from scratch (too slow)</p></li>
+<li><p><strong>scikit-learn</strong>: Lacks ICP and 3D point cloud optimizations</p></li>
+</ul>
+</li>
+</ol>
+<p>The conversion extracts XYZ coordinates from the byte stream and creates an Open3D PointCloud object that can be directly used with all the optimization algorithms. Think of it like converting a compressed JPEG to a NumPy array before doing computer vision — you need the data in a computational format, not a transport format.</p>
+</div>
+</li>
+<li><p><cite>publish_keyframe(cloud_msg)</cite>: Creates and publishes a new keyframe message containing the current point cloud and its associated pose. This keyframe will be received by the local map manager to update the sliding window map. Also updates the last keyframe reference for future distance/rotation comparisons.</p>
+<div class="pseudocode admonition">
+<p class="admonition-title">publish_keyframe(cloud_msg)</p>
+<div class="line-block">
+<div class="line">INPUT: cloud_msg (PointCloud2), <span class="math notranslate nohighlight">\(T_{\text{current}}\)</span> (from class member)</div>
+<div class="line"><br /></div>
+<div class="line">1) keyframe.cloud ← cloud_msg  // Attach original point cloud</div>
+<div class="line">2) keyframe.pose ← transform_to_pose(<span class="math notranslate nohighlight">\(T_{\text{current}}\)</span>)  // Convert 4×4 matrix to ROS Pose</div>
+<div class="line">3) publish(keyframe_topic, keyframe)  // Send to /slam/new_keyframe</div>
+<div class="line">4) <span class="math notranslate nohighlight">\(T_{\text{last\_kf}} \leftarrow T_{\text{current}}\)</span>  // Update keyframe reference</div>
+<div class="line">5) keyframe_count ← keyframe_count + 1  // Increment counter</div>
+</div>
+</div>
+</li>
+</ul>
 </section>
 <section id="node-2-local-map-manager-node">
 <h3>Node 2 — local_map_manager_node<a class="headerlink" href="#node-2-local-map-manager-node" title="Link to this heading">¶</a></h3>
@@ -495,1588 +559,510 @@ For each new scan:
 <li><p><code class="docutils literal notranslate"><span class="pre">/slam/local_map</span></code> (sensor_msgs/PointCloud2) — Merged and downsampled local map</p></li>
 </ul>
 <p><strong>What You Implement:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">keyframe_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Handle incoming keyframe</span>
-
-<span class="sd">    TODO: Implement keyframe storage</span>
-
-<span class="sd">    Steps:</span>
-<span class="sd">      1. Convert pose to 4x4 matrix</span>
-<span class="sd">      2. Add (cloud, pose) to deque</span>
-<span class="sd">      3. Rebuild local map</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-</pre></div>
+<ul class="simple">
+<li><p><cite>keyframe_callback(keyframe_msg)</cite>: Processes incoming keyframes from the odometry estimator and adds them to the sliding window buffer. Transforms each keyframe’s point cloud from sensor frame to map frame using the provided pose, ensuring all keyframes are in a common coordinate system before merging. This is critical to avoid the “fan pattern” artifact that occurs when clouds are merged without proper transformation.</p></li>
+</ul>
+<div class="pseudocode admonition">
+<p class="admonition-title">keyframe_callback(keyframe_msg)</p>
+<div class="line-block">
+<div class="line">INPUT: keyframe_msg (Keyframe message with cloud and pose)</div>
+<div class="line"><br /></div>
+<div class="line">1) <span class="math notranslate nohighlight">\(P \leftarrow \text{ros_to_open3d}(\text{keyframe_msg.cloud})\)</span></div>
+<div class="line">2) <span class="math notranslate nohighlight">\(T_{\text{pose}} \leftarrow \text{pose_to_transform_matrix}(\text{keyframe_msg.pose})\)</span></div>
+<div class="line">3) <span class="math notranslate nohighlight">\(P \leftarrow \text{transform}(P, T_{\text{pose}})\)</span>  // Transform to map frame</div>
+<div class="line">4) <span class="math notranslate nohighlight">\(P_{\text{ds}} \leftarrow \text{downsample}(P, v_{\text{size}})\)</span></div>
+<div class="line">5) keyframes_buffer.append(<span class="math notranslate nohighlight">\(P_{\text{ds}}\)</span>)  // Sliding window auto-removes oldest</div>
+<div class="line">6) update_local_map()</div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">update_local_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Rebuild local map from keyframe window</span>
-
-<span class="sd">    TODO: Implement local map construction</span>
-
-<span class="sd">    Steps:</span>
-<span class="sd">      1. Transform each keyframe to map frame</span>
-<span class="sd">      2. Merge all transformed clouds</span>
-<span class="sd">      3. Downsample merged cloud</span>
-<span class="sd">      4. Publish result</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-</pre></div>
 </div>
-<p><strong>Algorithm Overview:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Initialize:
-  keyframes ← empty deque (max size N)
-
-On new keyframe:
-  Add (cloud, pose) to keyframes
-  If size &gt; N:
-    Remove oldest keyframe
-
-  For each keyframe in window:
-    Transform cloud to map frame
-    Add to merged cloud
-
-  Downsample merged cloud
-  Publish as local_map
-</pre></div>
+<ul>
+<li><p><cite>update_local_map()</cite>: Builds and publishes the aggregated local map by combining all keyframes in the sliding window buffer. Since keyframes are already transformed to the map frame, they can be directly merged. The combined map is downsampled if too large to maintain real-time performance, and grayscale colors are added based on height for better visualization in RViz.</p>
+<div class="pseudocode admonition">
+<p class="admonition-title">update_local_map()</p>
+<div class="line-block">
+<div class="line">INPUT: keyframes_buffer (deque of point clouds in map frame)</div>
+<div class="line"><br /></div>
+<div class="line">1) <strong>IF</strong> keyframes_buffer is empty <strong>THEN</strong> RETURN</div>
+<div class="line">2) <span class="math notranslate nohighlight">\(P_{\text{combined}} \leftarrow \emptyset\)</span></div>
+<div class="line">3) <strong>FOR</strong> each <span class="math notranslate nohighlight">\(P_i\)</span> <strong>IN</strong> keyframes_buffer <strong>DO</strong></div>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(P_{\text{combined}} \leftarrow P_{\text{combined}} \cup P_i\)</span></div>
 </div>
-<p><strong>Parameter Configuration:</strong></p>
-<p>Both nodes use parameters from <code class="docutils literal notranslate"><span class="pre">config/params.yaml</span></code>:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">odometry_estimator</span><span class="p">:</span>
+<div class="line">4) <strong>IF</strong> <span class="math notranslate nohighlight">\(|P_{\text{combined}}| &gt; N_{\text{max}}\)</span> <strong>THEN</strong></div>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(P_{\text{combined}} \leftarrow \text{downsample}(P_{\text{combined}}, v_{\text{size}} \times 1.5)\)</span></div>
+</div>
+<div class="line">5) <span class="math notranslate nohighlight">\(colors \leftarrow \text{height_to_grayscale}(P_{\text{combined}})\)</span></div>
+<div class="line">6) <span class="math notranslate nohighlight">\(P_{\text{combined}}.\text{colors} \leftarrow colors\)</span></div>
+<div class="line">7) local_map_msg ← open3d_to_ros(<span class="math notranslate nohighlight">\(P_{\text{combined}}\)</span>, frame=”map”)</div>
+<div class="line">8) publish(local_map_topic, local_map_msg)</div>
+</div>
+</div>
+</li>
+</ul>
+<p><strong>Critical Note on Coordinate Frames:</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<blockquote>
+<div><p>Always transform clouds to map frame <strong>before</strong> storing in the keyframe buffer!</p>
+</div></blockquote>
+<div class="pseudocode admonition">
+<p class="admonition-title">Coordinate frame handling</p>
+<div class="line-block">
+<div class="line">CORRECT:</div>
+<div class="line-block">
+<div class="line">- transform(cloud, pose_matrix)  # to map frame</div>
+<div class="line">- keyframes.append(cloud)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">WRONG (creates fan pattern):</div>
+<div class="line-block">
+<div class="line">- keyframes.append((cloud, pose))  # do NOT store separately</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="performance-optimization-tips">
+<h2>5. Performance Optimization Tips<a class="headerlink" href="#performance-optimization-tips" title="Link to this heading">¶</a></h2>
+<p><strong>CRITICAL: Fast Point Cloud Conversion</strong></p>
+<p>The default ROS to Open3D conversion can be extremely slow (300ms per frame). If you experience performance issues, replace the function in <code class="docutils literal notranslate"><span class="pre">pointcloud_utils.py</span></code> with this optimized version:</p>
+<div class="pseudocode admonition">
+<p class="admonition-title">Fast ROS→Open3D conversion (vectorized)</p>
+<div class="line-block">
+<div class="line">INPUT: ros_cloud (PointCloud2)</div>
+<div class="line">OUTPUT: cloud (Open3D PointCloud)</div>
+<div class="line"><br /></div>
+<div class="line">1) Define dtype for fields: x, y, z, intensity (float32 each)</div>
+<div class="line">2) points_structured ← frombuffer(ros_cloud.data, dtype)  # zero-copy</div>
+<div class="line">3) points ← column_stack([points_structured[‘x’], ‘y’, ‘z’])</div>
+<div class="line">4) valid_mask ← rows without NaN/Inf</div>
+<div class="line">5) points ← points[valid_mask]</div>
+<div class="line">6) cloud ← new PointCloud</div>
+<div class="line">7) cloud.points ← Vector3dVector(points)</div>
+<div class="line">8) RETURN cloud</div>
+</div>
+</div>
+<p>This optimization alone can provide a <strong>7x speedup</strong> (from 300ms to 40ms per frame)!</p>
+<p><strong>ICP Parameter Tuning for Speed:</strong></p>
+<div class="pseudocode admonition">
+<p class="admonition-title">ICP parameter presets</p>
+<div class="line-block">
+<div class="line">Preset A (scan-to-scan, fast):</div>
+<div class="line-block">
+<div class="line">• max_correspondence_distance ← 1.0</div>
+<div class="line">• max_iteration ← 10</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Preset B (scan-to-map, precise):</div>
+<div class="line-block">
+<div class="line">• max_correspondence_distance ← 0.5</div>
+<div class="line">• max_iteration ← 5</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Usage: choose preset based on context; provide initial guess for scan-to-map when available.</div>
+</div>
+</div>
+</section>
+<section id="getting-started">
+<h2>6. Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h2>
+<section id="step-1-implement-node-1">
+<h3>Step 1: Implement Node 1<a class="headerlink" href="#step-1-implement-node-1" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">odometry_estimator_node.py</span></code></p></li>
+<li><p>Find TODO sections</p></li>
+<li><p>Implement <code class="docutils literal notranslate"><span class="pre">should_create_keyframe()</span></code> first</p></li>
+<li><p>Implement <code class="docutils literal notranslate"><span class="pre">publish_keyframe()</span></code> next</p></li>
+<li><p>Implement main <code class="docutils literal notranslate"><span class="pre">pointcloud_callback()</span></code> last</p></li>
+<li><p>Test with dev dataset</p></li>
+</ol>
+</section>
+<section id="step-2-implement-node-2">
+<h3>Step 2: Implement Node 2<a class="headerlink" href="#step-2-implement-node-2" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">local_map_manager_node.py</span></code></p></li>
+<li><p>Find TODO sections</p></li>
+<li><p>Implement <code class="docutils literal notranslate"><span class="pre">keyframe_callback()</span></code></p></li>
+<li><p>Implement <code class="docutils literal notranslate"><span class="pre">update_local_map()</span></code></p></li>
+<li><p>Test integration with Node 1</p></li>
+</ol>
+</section>
+<section id="step-3-tune-parameters">
+<h3>Step 3: Tune Parameters<a class="headerlink" href="#step-3-tune-parameters" title="Link to this heading">¶</a></h3>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">config/params.yaml</span></code> and experiment:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start with these defaults</span>
+<span class="nt">odometry_estimator_node</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">keyframe_distance_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w">    </span><span class="c1"># meters</span>
-<span class="w">    </span><span class="nt">keyframe_rotation_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15.0</span><span class="w">   </span><span class="c1"># degrees</span>
+<span class="w">    </span><span class="nt">keyframe_distance_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w">   </span><span class="c1"># meters</span>
+<span class="w">    </span><span class="nt">keyframe_rotation_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15.0</span><span class="w">  </span><span class="c1"># degrees</span>
+<span class="w">    </span><span class="nt">voxel_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span><span class="w">                   </span><span class="c1"># meters</span>
 
-<span class="nt">local_map_manager</span><span class="p">:</span>
+<span class="nt">local_map_manager_node</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">max_keyframes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w">                   </span><span class="c1"># sliding window size</span>
-<span class="w">    </span><span class="nt">voxel_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span><span class="w">                     </span><span class="c1"># meters (for downsampling)</span>
+<span class="w">    </span><span class="nt">max_keyframes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">    </span><span class="nt">voxel_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-test-with-dev-full-dataset">
+<h3>Step 4: Test with Dev/Full Dataset<a class="headerlink" href="#step-4-test-with-dev-full-dataset" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start with dev dataset</span>
+<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
+<span class="w"> </span><span class="c1"># Once dev dataset works, test with full</span>
+<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_full.launch.py
 </pre></div>
 </div>
 </section>
 </section>
-<section id="provided-starter-package">
-<h2>🚀 5. Provided Starter Package<a class="headerlink" href="#provided-starter-package" title="Link to this heading">¶</a></h2>
-<p>The instructor provides a <strong>complete starter package</strong> to help you focus on SLAM logic rather than infrastructure.</p>
-<p><strong>Download:</strong> <code class="docutils literal notranslate"><span class="pre">rwa2_starter.zip</span></code> from Canvas (under Assignment 2)</p>
-<p><strong>Package Contents:</strong></p>
+<section id="provided-package-structure">
+<h2>7. Provided Package Structure<a class="headerlink" href="#provided-package-structure" title="Link to this heading">¶</a></h2>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>rwa2_starter/
-├── data/
-│   ├── kitti_00_dev/                 ✅ Dev dataset (1000 frames)
-│   │   ├── metadata.yaml
-│   │   └── kitti_00_dev_0.db3
-│   └── kitti_00_full/                ✅ Full dataset (4541 frames)
-│       ├── metadata.yaml
-│       └── kitti_00_full_0.db3
-│
-├── slam_interfaces/                  ✅ Complete message package
-│   ├── msg/
-│   │   └── Keyframe.msg
-│   ├── CMakeLists.txt
-│   └── package.xml
-│
-└── slam_frontend/                    ✅ Python package
-    ├── config/
-    │   └── params.yaml               ✅ Default parameters
-    ├── slam_frontend/
-    │   ├── __init__.py
-    │   ├── icp_utils.py              ✅ ICP alignment (complete)
-    │   ├── transform_utils.py        ✅ Transform helpers (complete)
-    │   ├── pointcloud_utils.py       ✅ Point cloud ops (complete)
-    │   ├── odometry_estimator_node.py    ⚠️ Template with TODOs
-    │   └── local_map_manager_node.py     ⚠️ Template with TODOs
-    ├── launch/
-    │   ├── rwa2_dev.launch.py        ✅ Launch with dev dataset
-    │   └── rwa2_full.launch.py       ✅ Launch with full dataset
-    ├── rviz/
-    │   └── rwa2.rviz                 ✅ RViz config
-    ├── package.xml
-    ├── setup.py
-    ├── requirements.txt
-    └── README.md
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Legend:</strong></p>
-<p>✅ = Fully implemented (do not modify)</p>
-<p>⚠️ = Template with TODO sections (you implement)</p>
-</div>
-<section id="provided-utilities">
-<h3>Provided Utilities<a class="headerlink" href="#provided-utilities" title="Link to this heading">¶</a></h3>
-<p><strong>1. ICP Utilities</strong> (<code class="docutils literal notranslate"><span class="pre">icp_utils.py</span></code>)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ros2_to_o3d</span><span class="p">(</span><span class="n">cloud_msg</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert ROS 2 PointCloud2 to Open3D format&quot;&quot;&quot;</span>
-    <span class="c1"># Returns: open3d.geometry.PointCloud</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">align_clouds</span><span class="p">(</span><span class="n">source_msg</span><span class="p">,</span> <span class="n">target_msg</span><span class="p">,</span> <span class="n">voxel_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Align source to target using point-to-point ICP&quot;&quot;&quot;</span>
-    <span class="c1"># Returns: 4x4 numpy array (transformation matrix)</span>
-</pre></div>
-</div>
-<p><strong>2. Transform Utilities</strong> (<code class="docutils literal notranslate"><span class="pre">transform_utils.py</span></code>)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pose_to_transform_matrix</span><span class="p">(</span><span class="n">pose_msg</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert geometry_msgs/Pose to 4x4 matrix&quot;&quot;&quot;</span>
-    <span class="c1"># Returns: 4x4 numpy array</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">transform_to_pose</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert 4x4 matrix to geometry_msgs/Pose&quot;&quot;&quot;</span>
-    <span class="c1"># Returns: geometry_msgs/Pose</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">compute_distance</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute Euclidean distance between poses&quot;&quot;&quot;</span>
-    <span class="c1"># Returns: float (meters)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">compute_rotation_angle</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute rotation angle between poses&quot;&quot;&quot;</span>
-    <span class="c1"># Returns: float (degrees)</span>
-</pre></div>
-</div>
-<p><strong>3. Point Cloud Utilities</strong> (<code class="docutils literal notranslate"><span class="pre">pointcloud_utils.py</span></code>)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">transform_pointcloud</span><span class="p">(</span><span class="n">cloud_msg</span><span class="p">,</span> <span class="n">transform_matrix</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply 4x4 transformation to point cloud&quot;&quot;&quot;</span>
-    <span class="c1"># Returns: sensor_msgs/PointCloud2</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">merge_pointclouds</span><span class="p">(</span><span class="n">cloud_list</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merge multiple point clouds into one&quot;&quot;&quot;</span>
-    <span class="c1"># Returns: sensor_msgs/PointCloud2</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">downsample_pointcloud</span><span class="p">(</span><span class="n">cloud_msg</span><span class="p">,</span> <span class="n">voxel_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Downsample using voxel grid filter&quot;&quot;&quot;</span>
-    <span class="c1"># Returns: sensor_msgs/PointCloud2</span>
-</pre></div>
-</div>
-</section>
-<section id="message-definition">
-<h3>Message Definition<a class="headerlink" href="#message-definition" title="Link to this heading">¶</a></h3>
-<p><strong>Keyframe.msg</strong> (in <code class="docutils literal notranslate"><span class="pre">slam_interfaces/msg/</span></code>)</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sensor_msgs/PointCloud2 cloud
-geometry_msgs/Pose pose
-</pre></div>
-</div>
-<p>This custom message bundles a point cloud with its pose for efficient keyframe communication.</p>
-</section>
-</section>
-<section id="setup-and-command-execution-sequence">
-<h2>🔧 6. Setup and Command Execution Sequence<a class="headerlink" href="#setup-and-command-execution-sequence" title="Link to this heading">¶</a></h2>
-<p>This section provides step-by-step instructions for setting up your workspace and running the assignment. Follow these commands in the exact sequence shown.</p>
-<section id="initial-setup-one-time">
-<h3>Initial Setup (One-Time)<a class="headerlink" href="#initial-setup-one-time" title="Link to this heading">¶</a></h3>
-<p><strong>Step 1: Download and Extract Starter Package</strong></p>
-<p>Download <code class="docutils literal notranslate"><span class="pre">rwa2_starter.zip</span></code> from Canvas (under Assignment 2) and extract it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navigate to your workspace location</span>
-<span class="nb">cd</span><span class="w"> </span>~/
-
-<span class="c1"># Extract the starter package</span>
-unzip<span class="w"> </span>rwa2_starter.zip
-
-<span class="c1"># Navigate into the workspace</span>
-<span class="nb">cd</span><span class="w"> </span>rwa2_starter
-</pre></div>
-</div>
-<p>The extracted directory contains:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">data/</span></code> — KITTI bag files (dev and full datasets, ~4 GB total)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">slam_interfaces/</span></code> — Custom message definitions (Keyframe.msg)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">slam_frontend/</span></code> — Main Python package with node templates</p></li>
-</ul>
-<p><strong>Step 2: Install Python Dependencies</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install required Python packages</span>
-pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>slam_frontend/requirements.txt
-</pre></div>
-</div>
-<p>This installs: <code class="docutils literal notranslate"><span class="pre">open3d</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy</span></code> (if not already in your ROS 2 installation)</p>
-<p><strong>Step 3: Build the Workspace</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build all packages with symlink support</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
-
-<span class="c1"># Source the workspace overlay</span>
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">--symlink-install</span></code> flag creates symbolic links to Python files, allowing you to edit them without rebuilding.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><strong>Critical:</strong> You must run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">install/setup.bash</span></code> in <strong>every new terminal</strong> before running ROS 2 commands in this workspace.</p>
-</div>
-<p><strong>Step 4: Verify the Setup</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check development dataset</span>
-ros2<span class="w"> </span>bag<span class="w"> </span>info<span class="w"> </span>data/kitti_00_dev
-
-<span class="c1"># Expected output includes:</span>
-<span class="c1"># Duration: ~100.0s</span>
-<span class="c1"># Messages: 1000 (for /kitti/velo/pointcloud)</span>
-<span class="c1"># Topics: /kitti/velo/pointcloud, /ground_truth/odometry, /tf</span>
-
-<span class="c1"># Check full dataset</span>
-ros2<span class="w"> </span>bag<span class="w"> </span>info<span class="w"> </span>data/kitti_00_full
-
-<span class="c1"># Expected output includes:</span>
-<span class="c1"># Duration: ~454.0s</span>
-<span class="c1"># Messages: 4541 (for /kitti/velo/pointcloud)</span>
-</pre></div>
-</div>
-<p>If both commands succeed, your setup is complete!</p>
-</section>
-<section id="understanding-the-command-workflow">
-<h3>Understanding the Command Workflow<a class="headerlink" href="#understanding-the-command-workflow" title="Link to this heading">¶</a></h3>
-<p><strong>The Three Core Commands You’ll Use:</strong></p>
-<ol class="arabic simple">
-<li><p><strong>colcon build</strong> — Compiles packages (C++/CMake) and indexes Python packages</p></li>
-<li><p><strong>source install/setup.bash</strong> — Loads packages into your environment</p></li>
-<li><p><strong>ros2 launch</strong> — Starts multiple nodes and plays bag file simultaneously</p></li>
-</ol>
-<p><strong>When to Rebuild:</strong></p>
-<div class="table-wrapper colwidths-given docutils container">
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50.0%" />
-<col style="width: 50.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>You Changed</strong></p></th>
-<th class="head"><p><strong>Action Required</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Python code in node files</p></td>
-<td><p>No rebuild needed (with <code class="docutils literal notranslate"><span class="pre">--symlink-install</span></code>)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--symlink-install</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">package.xml</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--symlink-install</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Message definitions (.msg)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--symlink-install</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Launch files (.py)</p></td>
-<td><p>No rebuild needed</p></td>
-</tr>
-<tr class="row-odd"><td><p>Config files (.yaml)</p></td>
-<td><p>No rebuild needed</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="development-workflow-daily-use">
-<h3>Development Workflow (Daily Use)<a class="headerlink" href="#development-workflow-daily-use" title="Link to this heading">¶</a></h3>
-<p>This is the workflow you’ll repeat throughout the assignment:</p>
-<p><strong>Standard Development Cycle:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># === TERMINAL 1: Main development terminal ===</span>
-<span class="nb">cd</span><span class="w"> </span>~/rwa2_starter
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-<span class="c1"># 1. Edit your code</span>
-code<span class="w"> </span>slam_frontend/slam_frontend/odometry_estimator_node.py
-
-<span class="c1"># 2. Save changes</span>
-
-<span class="c1"># 3. Launch and test (no rebuild needed with --symlink-install)</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-
-<span class="c1"># 4. Observe output and RViz visualization</span>
-
-<span class="c1"># 5. Press Ctrl+C when done</span>
-
-<span class="c1"># 6. Repeat steps 1-5</span>
-</pre></div>
-</div>
-<p><strong>What the Launch Command Does:</strong></p>
-<p>When you run <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">slam_frontend</span> <span class="pre">rwa2_dev.launch.py</span></code>, it automatically:</p>
-<ol class="arabic simple">
-<li><p>✅ Plays the bag file (<code class="docutils literal notranslate"><span class="pre">data/kitti_00_dev/</span></code>)</p></li>
-<li><p>✅ Starts <code class="docutils literal notranslate"><span class="pre">odometry_estimator_node</span></code></p></li>
-<li><p>✅ Starts <code class="docutils literal notranslate"><span class="pre">local_map_manager_node</span></code></p></li>
-<li><p>✅ Loads parameters from <code class="docutils literal notranslate"><span class="pre">config/params.yaml</span></code></p></li>
-<li><p>✅ Opens RViz2 with pre-configured visualization</p></li>
-</ol>
-<p>You don’t need to run these separately!</p>
-</section>
-<section id="running-your-implementation">
-<h3>Running Your Implementation<a class="headerlink" href="#running-your-implementation" title="Link to this heading">¶</a></h3>
-<p><strong>Option 1: Use Launch Files (Recommended)</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Development dataset (1000 frames, ~100 seconds)</span>
-<span class="c1"># Use this 90% of the time</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-
-<span class="c1"># Full dataset (4541 frames, ~454 seconds)</span>
-<span class="c1"># Use before final submission</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_full.launch.py
-</pre></div>
-</div>
-<p><strong>Option 2: Manual Control (Advanced)</strong></p>
-<p>If you want to run components separately for debugging:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># === TERMINAL 1: Play bag manually ===</span>
-<span class="nb">cd</span><span class="w"> </span>~/rwa2_starter
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-ros2<span class="w"> </span>bag<span class="w"> </span>play<span class="w"> </span>data/kitti_00_dev<span class="w"> </span>--rate<span class="w"> </span><span class="m">1</span>.0
-
-<span class="c1"># === TERMINAL 2: Run odometry estimator ===</span>
-<span class="nb">cd</span><span class="w"> </span>~/rwa2_starter
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-ros2<span class="w"> </span>run<span class="w"> </span>slam_frontend<span class="w"> </span>odometry_estimator_node
-
-<span class="c1"># === TERMINAL 3: Run local map manager ===</span>
-<span class="nb">cd</span><span class="w"> </span>~/rwa2_starter
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-ros2<span class="w"> </span>run<span class="w"> </span>slam_frontend<span class="w"> </span>local_map_manager_node
-
-<span class="c1"># === TERMINAL 4: Open RViz ===</span>
-<span class="nb">cd</span><span class="w"> </span>~/rwa2_starter
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-rviz2<span class="w"> </span>-d<span class="w"> </span>slam_frontend/rviz/rwa2.rviz
-</pre></div>
-</div>
-</section>
-<section id="monitoring-and-debugging">
-<h3>Monitoring and Debugging<a class="headerlink" href="#monitoring-and-debugging" title="Link to this heading">¶</a></h3>
-<p>While your system is running, open additional terminals to monitor:</p>
-<p><strong>Check Active Topics:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># === TERMINAL 2: Topic monitoring ===</span>
-<span class="nb">cd</span><span class="w"> </span>~/rwa2_starter
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-ros2<span class="w"> </span>topic<span class="w"> </span>list
-</pre></div>
-</div>
-<p>Expected topics:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/kitti/velo/pointcloud       ← Input from bag file
-/ground_truth/odometry       ← Ground truth from bag file
-/tf                          ← Transforms from bag file + your nodes
-/odom                        ← Your odometry_estimator_node
-/path                        ← Your odometry_estimator_node
-/slam/new_keyframe           ← Your odometry_estimator_node
-/slam/local_map              ← Your local_map_manager_node
-</pre></div>
-</div>
-<p><strong>Monitor Publishing Rates:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check input point cloud rate</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/kitti/velo/pointcloud
-<span class="c1"># Expected: ~10 Hz</span>
-
-<span class="c1"># Check your odometry output rate</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/odom
-<span class="c1"># Expected: ~10 Hz (should match input)</span>
-
-<span class="c1"># Check keyframe creation rate</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/slam/new_keyframe
-<span class="c1"># Expected: ~1-2 Hz (depends on motion and thresholds)</span>
-
-<span class="c1"># Check local map updates</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/slam/local_map
-<span class="c1"># Expected: ~1-2 Hz (matches keyframe rate)</span>
-</pre></div>
-</div>
-<p><strong>Inspect Message Contents:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># View one odometry message</span>
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/odom<span class="w"> </span>--once
-
-<span class="c1"># View one keyframe message</span>
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/slam/new_keyframe<span class="w"> </span>--once
-
-<span class="c1"># View point cloud info (header only)</span>
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/kitti/velo/pointcloud<span class="w"> </span>--once<span class="w"> </span>--no-arr
-</pre></div>
-</div>
-<p><strong>Check Transform Tree:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate TF tree visualization</span>
-ros2<span class="w"> </span>run<span class="w"> </span>tf2_tools<span class="w"> </span>view_frames
-
-<span class="c1"># Open the generated PDF</span>
-evince<span class="w"> </span>frames.pdf
-
-<span class="c1"># Expected tree:</span>
-<span class="c1"># world → base_link → velodyne (from bag file)</span>
-<span class="c1"># map → odom (from your odometry_estimator_node)</span>
-</pre></div>
-</div>
-<p><strong>Monitor Node Status:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List running nodes</span>
-ros2<span class="w"> </span>node<span class="w"> </span>list
-<span class="c1"># Expected: /odometry_estimator_node, /local_map_manager_node</span>
-
-<span class="c1"># Get detailed node information</span>
-ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/odometry_estimator_node
-ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/local_map_manager_node
-
-<span class="c1"># Check parameter values</span>
-ros2<span class="w"> </span>param<span class="w"> </span>list<span class="w"> </span>/odometry_estimator_node
-ros2<span class="w"> </span>param<span class="w"> </span>get<span class="w"> </span>/odometry_estimator_node<span class="w"> </span>keyframe_distance_threshold
-</pre></div>
-</div>
-</section>
-<section id="complete-command-sequence-by-timeline">
-<h3>Complete Command Sequence by Timeline<a class="headerlink" href="#complete-command-sequence-by-timeline" title="Link to this heading">¶</a></h3>
-<p><strong>Day 1: Setup and Familiarization</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># === One-time setup ===</span>
-<span class="nb">cd</span><span class="w"> </span>~/
-unzip<span class="w"> </span>rwa2_starter.zip
-<span class="nb">cd</span><span class="w"> </span>rwa2_starter
-pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>slam_frontend/requirements.txt
-colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-<span class="c1"># Verify datasets</span>
-ros2<span class="w"> </span>bag<span class="w"> </span>info<span class="w"> </span>data/kitti_00_dev
-ros2<span class="w"> </span>bag<span class="w"> </span>info<span class="w"> </span>data/kitti_00_full
-
-<span class="c1"># First launch (nodes are templates, won&#39;t do much yet)</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-
-<span class="c1"># In another terminal: check topics</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>list
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/kitti/velo/pointcloud
-</pre></div>
-</div>
-<p><strong>Days 2-9: Iterative Development</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># === Start each session ===</span>
-<span class="nb">cd</span><span class="w"> </span>~/rwa2_starter
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-<span class="c1"># Edit code</span>
-code<span class="w"> </span>slam_frontend/slam_frontend/odometry_estimator_node.py
-
-<span class="c1"># Test immediately (no rebuild needed)</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-
-<span class="c1"># Debug in another terminal</span>
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/odom<span class="w"> </span>--once
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/slam/new_keyframe
-
-<span class="c1"># Iterate: Edit → Save → Launch → Test → Repeat</span>
-</pre></div>
-</div>
-<p><strong>Days 10-11: Final Validation</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># === Test with full dataset ===</span>
-<span class="nb">cd</span><span class="w"> </span>~/rwa2_starter
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-<span class="c1"># Run full 4541-frame sequence</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_full.launch.py
-
-<span class="c1"># Let it run for ~7.5 minutes</span>
-<span class="c1"># Verify trajectory completes the loop</span>
-
-<span class="c1"># Check final trajectory quality in RViz</span>
-</pre></div>
-</div>
-</section>
-<section id="troubleshooting-commands">
-<h3>Troubleshooting Commands<a class="headerlink" href="#troubleshooting-commands" title="Link to this heading">¶</a></h3>
-<p><strong>Common Issues and Diagnostic Commands:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Issue: &quot;ros2: command not found&quot;</span>
-<span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w">  </span><span class="c1"># or your ROS 2 distro</span>
-
-<span class="c1"># Issue: &quot;Package &#39;slam_frontend&#39; not found&quot;</span>
-<span class="nb">cd</span><span class="w"> </span>~/rwa2_starter
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-<span class="c1"># Issue: Python import errors</span>
-pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>slam_frontend/requirements.txt
-
-<span class="c1"># Issue: Changes don&#39;t take effect</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-<span class="c1"># Issue: Want to see detailed logs</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py<span class="w"> </span>--log-level<span class="w"> </span>debug
-
-<span class="c1"># Issue: Node crashes on startup</span>
-<span class="c1"># Run node directly to see full error:</span>
-ros2<span class="w"> </span>run<span class="w"> </span>slam_frontend<span class="w"> </span>odometry_estimator_node
-</pre></div>
-</div>
-<p><strong>Verify Your Implementation:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># After implementing keyframe selection:</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/slam/new_keyframe
-<span class="c1"># Should see ~1-2 Hz</span>
-
-<span class="c1"># After implementing local map:</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/slam/local_map
-<span class="c1"># Should see updates matching keyframes</span>
-
-<span class="c1"># After implementing odometry:</span>
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/path<span class="w"> </span>--once
-<span class="c1"># Should see growing list of poses</span>
-</pre></div>
-</div>
-</section>
-<section id="quick-reference-card">
-<h3>Quick Reference Card<a class="headerlink" href="#quick-reference-card" title="Link to this heading">¶</a></h3>
-<p><strong>Commands You’ll Use Most:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># === Every new terminal needs this ===</span>
-<span class="nb">cd</span><span class="w"> </span>~/rwa2_starter
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-<span class="c1"># === Development (use 90% of time) ===</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-
-<span class="c1"># === Final testing ===</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_full.launch.py
-
-<span class="c1"># === Only if you modify CMakeLists.txt or package.xml ===</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
-
-<span class="c1"># === Debug helpers ===</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w">                              </span><span class="c1"># See all topics</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/kitti/velo/pointcloud<span class="w">        </span><span class="c1"># Check rate</span>
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/odom<span class="w"> </span>--once<span class="w">                </span><span class="c1"># See one message</span>
-ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w">                               </span><span class="c1"># See running nodes</span>
-ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/odometry_estimator_node<span class="w">     </span><span class="c1"># Node details</span>
-</pre></div>
-</div>
-<p><strong>File Locations:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>~/rwa2_starter/
-├── data/
-│   ├── kitti_00_dev/        ← Dev dataset bag file
-│   └── kitti_00_full/       ← Full dataset bag file
 ├── slam_frontend/
+│   ├── package.xml
+│   ├── setup.py
+│   ├── setup.cfg
+│   ├── config/
+│   │   └── params.yaml              # &lt;-- Edit parameters here
+│   ├── launch/
+│   │   ├── rwa2_dev.launch.py       # Launch for dev dataset
+│   │   └── rwa2_full.launch.py      # Launch for full dataset
+│   ├── rviz/
+│   │   └── rwa2.rviz                # RViz configuration
 │   ├── slam_frontend/
-│   │   ├── odometry_estimator_node.py    ← Edit this
-│   │   └── local_map_manager_node.py     ← Edit this
-│   ├── config/params.yaml   ← Tune parameters here
-│   └── launch/
-│       ├── rwa2_dev.launch.py
-│       └── rwa2_full.launch.py
+│   │   ├── __init__.py
+│   │   ├── odometry_estimator_node.py    # &lt;-- TODO: Implement
+│   │   ├── local_map_manager_node.py     # &lt;-- TODO: Implement
+│   │   ├── icp_utils.py             # Provided ICP utilities
+│   │   ├── transform_utils.py       # Provided SE(3) utilities
+│   │   ├── pointcloud_utils.py      # Provided conversion utilities
+│   │   ├── fast_pointcloud_utils.py # Optimized conversion (optional)
+│   │   ├── diagnostic_node.py       # Diagnostic tools (provided)
+│   │   └── verification.py          # Verification script (provided)
+│   └── resource/
+│       └── slam_frontend
+├── slam_interfaces/
+│   ├── CMakeLists.txt
+│   ├── package.xml
+│   └── msg/
+│       └── Keyframe.msg             # Custom message definition
+└── data/
+    ├── kitti_00_dev/
+    │   ├── kitti_00_dev_0.db3       # Development bag (1000 frames)
+    │   └── metadata.yaml
+    └── kitti_00_full/
+        ├── kitti_00_full_0.db3      # Full dataset (4541 frames)
+        └── metadata.yaml
 </pre></div>
 </div>
-</section>
-</section>
-<section id="implementation-guide">
-<h2>📋 7. Implementation Guide<a class="headerlink" href="#implementation-guide" title="Link to this heading">¶</a></h2>
-<p>This section provides a complete, step-by-step guide with exact commands to implement and test your SLAM pipeline.</p>
-<section id="step-1-setup-and-build-10-minutes">
-<h3>Step 1: Setup and Build (10 minutes)<a class="headerlink" href="#step-1-setup-and-build-10-minutes" title="Link to this heading">¶</a></h3>
-<p><strong>Extract and Navigate to Workspace:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract starter package</span>
-<span class="nb">cd</span><span class="w"> </span>~/
-unzip<span class="w"> </span>rwa2_starter.zip
-<span class="nb">cd</span><span class="w"> </span>rwa2_starter
-</pre></div>
-</div>
-<p><strong>Install Python Dependencies:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install required Python packages</span>
-pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>slam_frontend/requirements.txt
-
-<span class="c1"># Verify Open3D installation</span>
-python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import open3d; print(f&#39;Open3D version: {open3d.__version__}&#39;)&quot;</span>
-</pre></div>
-</div>
-<p><strong>Build the Workspace:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build both packages</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
-
-<span class="c1"># Source the workspace</span>
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-<span class="c1"># Verify packages are built</span>
-ros2<span class="w"> </span>pkg<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>slam
-</pre></div>
-</div>
-<p>Expected output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slam_frontend</span>
-<span class="n">slam_interfaces</span>
-</pre></div>
-</div>
-<p><strong>Verify Dataset Files:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check development dataset</span>
-ros2<span class="w"> </span>bag<span class="w"> </span>info<span class="w"> </span>data/kitti_00_dev
-</pre></div>
-</div>
-<p>Expected output should show:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Files</span><span class="p">:</span>             <span class="n">kitti_00_dev_0</span><span class="o">.</span><span class="n">db3</span>
-<span class="n">Duration</span><span class="p">:</span>          <span class="mf">100.0</span><span class="n">s</span>
-<span class="n">Start</span><span class="p">:</span>             <span class="o">&lt;</span><span class="n">timestamp</span><span class="o">&gt;</span>
-<span class="n">End</span><span class="p">:</span>               <span class="o">&lt;</span><span class="n">timestamp</span><span class="o">&gt;</span>
-<span class="n">Messages</span><span class="p">:</span>          <span class="mi">1000</span>
-<span class="n">Topic</span> <span class="n">information</span><span class="p">:</span> <span class="n">Topic</span><span class="p">:</span> <span class="o">/</span><span class="n">kitti</span><span class="o">/</span><span class="n">velo</span><span class="o">/</span><span class="n">pointcloud</span> <span class="o">|</span> <span class="n">Type</span><span class="p">:</span> <span class="n">sensor_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">PointCloud2</span> <span class="o">|</span> <span class="n">Count</span><span class="p">:</span> <span class="mi">1000</span>
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check full dataset</span>
-ros2<span class="w"> </span>bag<span class="w"> </span>info<span class="w"> </span>data/kitti_00_full
-</pre></div>
-</div>
-<p>Expected output should show:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Messages</span><span class="p">:</span>          <span class="mi">4541</span>
-<span class="n">Topic</span><span class="p">:</span> <span class="o">/</span><span class="n">kitti</span><span class="o">/</span><span class="n">velo</span><span class="o">/</span><span class="n">pointcloud</span> <span class="o">|</span> <span class="n">Type</span><span class="p">:</span> <span class="n">sensor_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">PointCloud2</span> <span class="o">|</span> <span class="n">Count</span><span class="p">:</span> <span class="mi">4541</span>
-</pre></div>
-</div>
-</section>
-<section id="step-2-understand-the-templates-20-minutes">
-<h3>Step 2: Understand the Templates (20 minutes)<a class="headerlink" href="#step-2-understand-the-templates-20-minutes" title="Link to this heading">¶</a></h3>
-<p><strong>Open Node Templates:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open both templates in your editor</span>
-code<span class="w"> </span>slam_frontend/slam_frontend/odometry_estimator_node.py
-code<span class="w"> </span>slam_frontend/slam_frontend/local_map_manager_node.py
-</pre></div>
-</div>
-<p>Look for:</p>
+<p><strong>Files you modify:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">TODO:</span></code> comments marking what you implement</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Hints:</span></code> providing implementation guidance</p></li>
-<li><p>Existing code showing node structure and utilities</p></li>
+<li><p>✏️ <code class="docutils literal notranslate"><span class="pre">src/odometry_estimator_node.py</span></code> — Implement 3 functions</p></li>
+<li><p>✏️ <code class="docutils literal notranslate"><span class="pre">src/local_map_manager_node.py</span></code> — Implement 2 functions</p></li>
+<li><p>✏️ <code class="docutils literal notranslate"><span class="pre">config/params.yaml</span></code> — Tune parameters</p></li>
 </ul>
-<p><strong>Review Provided Utilities:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Review utility files (complete implementations)</span>
-code<span class="w"> </span>slam_frontend/slam_frontend/icp_utils.py
-code<span class="w"> </span>slam_frontend/slam_frontend/transform_utils.py
-code<span class="w"> </span>slam_frontend/slam_frontend/pointcloud_utils.py
-</pre></div>
-</div>
-</section>
-<section id="step-3-test-provided-code-10-minutes">
-<h3>Step 3: Test Provided Code (10 minutes)<a class="headerlink" href="#step-3-test-provided-code-10-minutes" title="Link to this heading">¶</a></h3>
-<p><strong>Terminal 1: Launch the System</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Source workspace</span>
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-<span class="c1"># Launch with development dataset</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-</pre></div>
-</div>
-<p>Expected output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">launch</span><span class="p">]:</span> <span class="n">All</span> <span class="n">log</span> <span class="n">files</span> <span class="n">can</span> <span class="n">be</span> <span class="n">found</span> <span class="n">below</span> <span class="o">/</span><span class="n">home</span><span class="o">/...</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">launch</span><span class="p">]:</span> <span class="n">Default</span> <span class="n">logging</span> <span class="n">verbosity</span> <span class="ow">is</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">INFO</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">bag_player</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span> <span class="n">process</span> <span class="n">started</span> <span class="k">with</span> <span class="n">pid</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">odometry_estimator_node</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span> <span class="n">process</span> <span class="n">started</span> <span class="k">with</span> <span class="n">pid</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">local_map_manager_node</span><span class="o">-</span><span class="mi">3</span><span class="p">]:</span> <span class="n">process</span> <span class="n">started</span> <span class="k">with</span> <span class="n">pid</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
-</pre></div>
-</div>
-<p><strong>Terminal 2: Monitor Topics</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all active topics</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>list
-</pre></div>
-</div>
-<p>Expected output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/kitti/velo/pointcloud      ← From bag file
-/ground_truth/odometry      ← From bag file
-/tf                         ← From bag file
-/slam/new_keyframe          ← Your odometry node will publish here
-/slam/local_map             ← Your local map node will publish here
-/odom                       ← Your odometry node will publish here
-/path                       ← Your odometry node will publish here
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check point cloud publishing rate</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/kitti/velo/pointcloud
-</pre></div>
-</div>
-<p>Expected output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">average</span> <span class="n">rate</span><span class="p">:</span> <span class="mf">10.001</span>
-<span class="nb">min</span><span class="p">:</span> <span class="mf">0.099</span><span class="n">s</span> <span class="nb">max</span><span class="p">:</span> <span class="mf">0.101</span><span class="n">s</span> <span class="n">std</span> <span class="n">dev</span><span class="p">:</span> <span class="mf">0.00050</span><span class="n">s</span> <span class="n">window</span><span class="p">:</span> <span class="mi">100</span>
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Echo one point cloud message</span>
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/kitti/velo/pointcloud<span class="w"> </span>--once
-</pre></div>
-</div>
-<p><strong>Terminal 3: Open RViz2</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open RViz with provided configuration</span>
-rviz2<span class="w"> </span>-d<span class="w"> </span>slam_frontend/rviz/rwa2.rviz
-</pre></div>
-</div>
-<p>You should see:</p>
+<p><strong>Files you should NOT modify:</strong></p>
 <ul class="simple">
-<li><p>Point clouds being published at 10 Hz (green/colored points)</p></li>
-<li><p>Ground truth path (if configured)</p></li>
-<li><p>No estimated path yet (nodes are templates)</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>At this stage, the bag file plays successfully and point clouds are visible, but your nodes don’t do anything useful yet because they are just templates. This is expected!</p>
-</div>
-</section>
-<section id="step-4-implement-node-1-odometry-estimator-4-6-hours">
-<h3>Step 4: Implement Node 1 - Odometry Estimator (4-6 hours)<a class="headerlink" href="#step-4-implement-node-1-odometry-estimator-4-6-hours" title="Link to this heading">¶</a></h3>
-<p>Implement in this order:</p>
-<p><strong>4.1 First: Keyframe selection logic</strong></p>
-<p>Open <code class="docutils literal notranslate"><span class="pre">slam_frontend/slam_frontend/odometry_estimator_node.py</span></code> and implement:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">should_create_keyframe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_pose</span><span class="p">,</span> <span class="n">last_keyframe_pose</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;TODO: Implement keyframe selection logic&quot;&quot;&quot;</span>
-    <span class="c1"># Compute distance</span>
-    <span class="n">distance</span> <span class="o">=</span> <span class="n">compute_distance</span><span class="p">(</span><span class="n">current_pose</span><span class="p">,</span> <span class="n">last_keyframe_pose</span><span class="p">)</span>
-
-    <span class="c1"># Compute rotation</span>
-    <span class="n">angle</span> <span class="o">=</span> <span class="n">compute_rotation_angle</span><span class="p">(</span><span class="n">current_pose</span><span class="p">,</span> <span class="n">last_keyframe_pose</span><span class="p">)</span>
-
-    <span class="c1"># Check thresholds</span>
-    <span class="k">if</span> <span class="n">distance</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyframe_distance_threshold</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">if</span> <span class="n">angle</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyframe_rotation_threshold</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-
-    <span class="k">return</span> <span class="kc">False</span>
-</pre></div>
-</div>
-<p><strong>Test after implementing:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rebuild workspace</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install<span class="w"> </span>--packages-select<span class="w"> </span>slam_frontend
-
-<span class="c1"># Source</span>
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-<span class="c1"># Run with development dataset</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-</pre></div>
-</div>
-<p>Check console output for keyframe creation messages.</p>
-<p><strong>4.2 Second: Keyframe publication</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">publish_keyframe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cloud_msg</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;TODO: Implement keyframe publication&quot;&quot;&quot;</span>
-    <span class="n">keyframe</span> <span class="o">=</span> <span class="n">Keyframe</span><span class="p">()</span>
-    <span class="n">keyframe</span><span class="o">.</span><span class="n">cloud</span> <span class="o">=</span> <span class="n">cloud_msg</span>
-    <span class="n">keyframe</span><span class="o">.</span><span class="n">pose</span> <span class="o">=</span> <span class="n">transform_to_pose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_pose</span><span class="p">)</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">keyframe_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">keyframe</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">last_keyframe_pose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_pose</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Created keyframe (total: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">keyframe_count</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">keyframe_count</span> <span class="o">+=</span> <span class="mi">1</span>
-</pre></div>
-</div>
-<p><strong>Test after implementing:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rebuild and run</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install<span class="w"> </span>--packages-select<span class="w"> </span>slam_frontend
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-
-<span class="c1"># In another terminal, check keyframe topic</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/slam/new_keyframe
-
-<span class="c1"># Echo one keyframe</span>
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/slam/new_keyframe<span class="w"> </span>--once
-</pre></div>
-</div>
-<p><strong>4.3 Third: Main processing loop</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pointcloud_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;TODO: Implement scan processing and odometry estimation&quot;&quot;&quot;</span>
-    <span class="c1"># Handle first scan</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_scan</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">publish_keyframe</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">first_scan</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">return</span>
-
-    <span class="c1"># Wait for local map</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_map</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span>
-
-    <span class="c1"># Align to local map</span>
-    <span class="n">delta_T</span> <span class="o">=</span> <span class="n">align_clouds</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_map</span><span class="p">)</span>
-
-    <span class="c1"># Update pose</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">current_pose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_pose</span> <span class="o">@</span> <span class="n">delta_T</span>
-
-    <span class="c1"># Publish odometry and path</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">publish_odometry</span><span class="p">()</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">publish_path</span><span class="p">()</span>
-
-    <span class="c1"># Check keyframe</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">should_create_keyframe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_pose</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_keyframe_pose</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">publish_keyframe</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Test after implementing:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rebuild and run</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install<span class="w"> </span>--packages-select<span class="w"> </span>slam_frontend
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-</pre></div>
-</div>
-<p>Check in RViz:</p>
-<ul class="simple">
-<li><p>Trajectory path should appear (red line)</p></li>
-<li><p>Path should follow the road</p></li>
-<li><p>Console shows periodic keyframe creation</p></li>
-</ul>
-<p><strong>Verify Node 1 is Working:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check all output topics</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;(odom|path|keyframe)&quot;</span>
-
-<span class="c1"># Check publishing rates</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/odom
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/path
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/slam/new_keyframe
-
-<span class="c1"># Check node info</span>
-ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/odometry_estimator
-</pre></div>
-</div>
-</section>
-<section id="step-5-implement-node-2-local-map-manager-3-5-hours">
-<h3>Step 5: Implement Node 2 - Local Map Manager (3-5 hours)<a class="headerlink" href="#step-5-implement-node-2-local-map-manager-3-5-hours" title="Link to this heading">¶</a></h3>
-<p><strong>5.1 First: Keyframe storage</strong></p>
-<p>Open <code class="docutils literal notranslate"><span class="pre">slam_frontend/slam_frontend/local_map_manager_node.py</span></code> and implement:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">keyframe_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;TODO: Implement keyframe storage&quot;&quot;&quot;</span>
-    <span class="c1"># Convert pose to matrix</span>
-    <span class="n">pose_matrix</span> <span class="o">=</span> <span class="n">pose_to_transform_matrix</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="p">)</span>
-
-    <span class="c1"># Add to deque (automatically removes oldest if full)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">keyframes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">msg</span><span class="o">.</span><span class="n">cloud</span><span class="p">,</span> <span class="n">pose_matrix</span><span class="p">))</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Added keyframe (window size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keyframes</span><span class="p">)</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
-
-    <span class="c1"># Rebuild map</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">update_local_map</span><span class="p">()</span>
-</pre></div>
-</div>
-<p><strong>5.2 Second: Local map construction</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">update_local_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;TODO: Implement local map construction&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyframes</span><span class="p">:</span>
-        <span class="k">return</span>
-
-    <span class="c1"># Transform all keyframes to map frame</span>
-    <span class="n">transformed_clouds</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">cloud</span><span class="p">,</span> <span class="n">pose</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyframes</span><span class="p">:</span>
-        <span class="n">transformed</span> <span class="o">=</span> <span class="n">transform_pointcloud</span><span class="p">(</span><span class="n">cloud</span><span class="p">,</span> <span class="n">pose</span><span class="p">)</span>
-        <span class="n">transformed_clouds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
-
-    <span class="c1"># Merge</span>
-    <span class="n">merged</span> <span class="o">=</span> <span class="n">merge_pointclouds</span><span class="p">(</span><span class="n">transformed_clouds</span><span class="p">)</span>
-
-    <span class="c1"># Downsample</span>
-    <span class="n">downsampled</span> <span class="o">=</span> <span class="n">downsample_pointcloud</span><span class="p">(</span><span class="n">merged</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">voxel_size</span><span class="p">)</span>
-
-    <span class="c1"># Publish</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">local_map_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">downsampled</span><span class="p">)</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Published local map with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keyframes</span><span class="p">)</span><span class="si">}</span><span class="s1"> keyframes&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Test after implementing:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rebuild</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install<span class="w"> </span>--packages-select<span class="w"> </span>slam_frontend
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-
-<span class="c1"># Run full system</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-</pre></div>
-</div>
-<p><strong>Verify Node 2 is Working:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check local map topic</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/slam/local_map
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/slam/local_map<span class="w"> </span>--once
-
-<span class="c1"># Check node info</span>
-ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/local_map_manager
-</pre></div>
-</div>
-<p>In RViz, you should now see:</p>
-<ul class="simple">
-<li><p>Local map visualization (aggregated point cloud)</p></li>
-<li><p>Smooth trajectory following the road</p></li>
-<li><p>Keyframes being added periodically</p></li>
+<li><p>❌ <code class="docutils literal notranslate"><span class="pre">slam_frontend/icp_utils.py</span></code> — Provided utilities</p></li>
+<li><p>❌ <code class="docutils literal notranslate"><span class="pre">slam_frontend/transform_utils.py</span></code> — Provided utilities</p></li>
+<li><p>❌ <code class="docutils literal notranslate"><span class="pre">slam_frontend/pointcloud_utils.py</span></code> — Provided utilities (unless optimizing)</p></li>
+<li><p>❌ Launch files (unless adding features)</p></li>
 </ul>
 </section>
-<section id="step-6-integration-testing-2-3-hours">
-<h3>Step 6: Integration Testing (2-3 hours)<a class="headerlink" href="#step-6-integration-testing-2-3-hours" title="Link to this heading">¶</a></h3>
-<p><strong>6.1 Test with Development Dataset</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal 1: Launch system</span>
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
+<section id="testing-and-evaluation">
+<h2>8. Testing and Evaluation<a class="headerlink" href="#testing-and-evaluation" title="Link to this heading">¶</a></h2>
+<section id="verify-your-implementation">
+<h3>Verify Your Implementation<a class="headerlink" href="#verify-your-implementation" title="Link to this heading">¶</a></h3>
+<p>Use the provided verification script (<cite>verification.py</cite>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run verification node</span>
+python3<span class="w"> </span>verification.py
 
-<span class="c1"># Terminal 2: Monitor performance</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/odom
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/slam/local_map
+<span class="c1"># Expected output:</span>
+<span class="o">==================================================</span>
+VERIFICATION<span class="w"> </span>SUMMARY<span class="w"> </span><span class="o">(</span><span class="nv">t</span><span class="o">=</span><span class="m">60</span>.0s<span class="o">)</span>
+<span class="o">==================================================</span>
+Keyframes<span class="w"> </span>generated:<span class="w"> </span><span class="m">150</span>
+Average<span class="w"> </span>processing<span class="w"> </span>rate:<span class="w"> </span><span class="m">15</span>.2<span class="w"> </span>Hz
+Total<span class="w"> </span>distance<span class="w"> </span>traveled:<span class="w"> </span><span class="m">357</span>.7m
+Z-axis<span class="w"> </span>variation:<span class="w"> </span><span class="m">2</span>.1m
+Max<span class="w"> </span>jump<span class="w"> </span>between<span class="w"> </span>poses:<span class="w"> </span><span class="m">1</span>.2m
+<span class="o">==================================================</span>
+PERFORMANCE<span class="w"> </span>CHECKS:
+<span class="o">==================================================</span>
+✅<span class="w"> </span>Keyframe<span class="w"> </span>generation<span class="w"> </span>rate<span class="w"> </span>OK
+✅<span class="w"> </span>Processing<span class="w"> </span>speed<span class="w"> </span>OK<span class="w"> </span><span class="o">(</span><span class="m">15</span>.2<span class="w"> </span>Hz<span class="o">)</span>
+✅<span class="w"> </span>Z-drift<span class="w"> </span>within<span class="w"> </span>limits<span class="w"> </span><span class="o">(</span><span class="m">2</span>.1m<span class="o">)</span>
+✅<span class="w"> </span>Path<span class="w"> </span>continuity<span class="w"> </span>OK
+✅<span class="w"> </span>Vehicle<span class="w"> </span>is<span class="w"> </span>moving
 
-<span class="c1"># Terminal 3: Open RViz</span>
-rviz2<span class="w"> </span>-d<span class="w"> </span>slam_frontend/rviz/rwa2.rviz
-</pre></div>
-</div>
-<p>Watch for:</p>
-<ul class="simple">
-<li><p>Smooth trajectory path</p></li>
-<li><p>Periodic keyframe creation</p></li>
-<li><p>No error messages in console</p></li>
-<li><p>Reasonable processing speed (~10 Hz)</p></li>
-</ul>
-<p><strong>6.2 Parameter Tuning</strong></p>
-<p>Edit <code class="docutils literal notranslate"><span class="pre">slam_frontend/config/params.yaml</span></code>:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">odometry_estimator</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">keyframe_distance_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w">    </span><span class="c1"># Try 0.5-2.0</span>
-<span class="w">    </span><span class="nt">keyframe_rotation_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15.0</span><span class="w">   </span><span class="c1"># Try 10-20</span>
-
-<span class="nt">local_map_manager</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">max_keyframes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w">                   </span><span class="c1"># Try 15-25</span>
-<span class="w">    </span><span class="nt">voxel_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span><span class="w">                     </span><span class="c1"># Try 0.1-0.3</span>
-</pre></div>
-</div>
-<p>After changing parameters:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># No rebuild needed (YAML file read at runtime)</span>
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-</pre></div>
-</div>
-<p><strong>6.3 Test with Full Dataset</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run with full dataset</span>
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_full.launch.py
-</pre></div>
-</div>
-<p>This takes ~7.5 minutes to complete. Monitor:</p>
-<ul class="simple">
-<li><p>Trajectory quality over long distance</p></li>
-<li><p>Memory usage (should stay reasonable)</p></li>
-<li><p>Processing speed (should maintain ~10 Hz)</p></li>
-<li><p>Drift accumulation</p></li>
-</ul>
-<p><strong>6.4 Record Results</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save trajectory for analysis</span>
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/path<span class="w"> </span>&gt;<span class="w"> </span>dev_trajectory.txt
-
-<span class="c1"># Compare with ground truth</span>
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/ground_truth/odometry<span class="w"> </span>&gt;<span class="w"> </span>ground_truth.txt
+🎉<span class="w"> </span>ALL<span class="w"> </span>CHECKS<span class="w"> </span>PASSING!<span class="w"> </span>🎉
 </pre></div>
 </div>
 </section>
-<section id="step-7-final-validation-1-hour">
-<h3>Step 7: Final Validation (1 hour)<a class="headerlink" href="#step-7-final-validation-1-hour" title="Link to this heading">¶</a></h3>
-<p><strong>7.1 Comprehensive Test Checklist</strong></p>
-<p>Run these commands to verify everything works:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Verify workspace builds</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
-
-<span class="c1"># 2. Source and list packages</span>
-<span class="nb">source</span><span class="w"> </span>install/setup.bash
-ros2<span class="w"> </span>pkg<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>slam
-
-<span class="c1"># 3. Test dev dataset</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-<span class="c1"># (Let it run completely, check for errors)</span>
-
-<span class="c1"># 4. Test full dataset</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_full.launch.py
-<span class="c1"># (Let it run completely, check for errors)</span>
-
-<span class="c1"># 5. Verify all topics</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;(odom|path|keyframe|local_map)&quot;</span>
-
-<span class="c1"># 6. Check TF tree</span>
-ros2<span class="w"> </span>run<span class="w"> </span>tf2_tools<span class="w"> </span>view_frames
-evince<span class="w"> </span>frames.pdf
-</pre></div>
-</div>
-<p><strong>7.2 Performance Benchmarks</strong></p>
-<p>Your implementation should meet these criteria:</p>
+<section id="evaluation-criteria">
+<h3>Evaluation Criteria<a class="headerlink" href="#evaluation-criteria" title="Link to this heading">¶</a></h3>
+<p>Your implementation will be evaluated on:</p>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 40.0%" />
-<col style="width: 60.0%" />
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Metric</strong></p></th>
-<th class="head"><p><strong>Expected Value</strong></p></th>
+<th class="head"><p><strong>Requirement</strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Odometry publishing rate</p></td>
-<td><p>~10 Hz (close to input rate)</p></td>
+<tr class="row-even"><td><p><strong>Processing Speed</strong></p></td>
+<td><p>≥ 5 Hz (target: 10-20 Hz)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Keyframe creation rate</p></td>
-<td><p>~1-3 per second (depends on motion)</p></td>
+<tr class="row-odd"><td><p><strong>Keyframe Count</strong></p></td>
+<td><p>200-400 for full sequence</p></td>
 </tr>
-<tr class="row-even"><td><p>Local map update rate</p></td>
-<td><p>~1-3 Hz (when keyframes created)</p></td>
+<tr class="row-even"><td><p><strong>Z-axis Drift</strong></p></td>
+<td><p>&lt; 4 meters total</p></td>
 </tr>
-<tr class="row-odd"><td><p>Memory usage</p></td>
-<td><p>&lt;2 GB for dev dataset, &lt;4 GB for full</p></td>
+<tr class="row-odd"><td><p><strong>Path Continuity</strong></p></td>
+<td><p>Max jump &lt; 5 meters</p></td>
 </tr>
-<tr class="row-even"><td><p>Dev dataset completion time</p></td>
-<td><p>~100 seconds (real-time playback)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Full dataset completion time</p></td>
-<td><p>~454 seconds (real-time playback)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>7.3 Common Issues and Debugging</strong></p>
-<p>If something doesn’t work:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if nodes are running</span>
-ros2<span class="w"> </span>node<span class="w"> </span>list
-
-<span class="c1"># Check node details</span>
-ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/odometry_estimator
-ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/local_map_manager
-
-<span class="c1"># Check for error messages</span>
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/rosout<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ERROR
-
-<span class="c1"># Verify subscriptions/publications</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/kitti/velo/pointcloud
-ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/slam/local_map
-
-<span class="c1"># Check parameter values</span>
-ros2<span class="w"> </span>param<span class="w"> </span>list<span class="w"> </span>/odometry_estimator
-ros2<span class="w"> </span>param<span class="w"> </span>get<span class="w"> </span>/odometry_estimator<span class="w"> </span>keyframe_distance_threshold
-<span class="w">       </span><span class="c1"># Downsample</span>
-<span class="w">       </span><span class="nv">downsampled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>downsample_pointcloud<span class="o">(</span>merged,<span class="w"> </span>self.voxel_size<span class="o">)</span>
-
-<span class="w">       </span><span class="c1"># Publish</span>
-<span class="w">       </span>self.local_map_pub.publish<span class="o">(</span>downsampled<span class="o">)</span>
-</pre></div>
-</div>
-<p><strong>Test:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check that local map is being published</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/slam/local_map
-
-<span class="c1"># In RViz, you should see local map updating</span>
-</pre></div>
-</div>
-<p><strong>Step 6: Integration Testing (2-3 hours)</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run full pipeline with dev dataset</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-</pre></div>
-</div>
-<p>Check:</p>
-<ul class="simple">
-<li><p>✅ Trajectory path forms smoothly</p></li>
-<li><p>✅ Keyframes created at regular intervals</p></li>
-<li><p>✅ Local map updates as robot moves</p></li>
-<li><p>✅ No crashes or errors</p></li>
-</ul>
-<p><strong>Step 7: Parameter Tuning (1-2 hours)</strong></p>
-<p>Edit <code class="docutils literal notranslate"><span class="pre">config/params.yaml</span></code> and test different values:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try different thresholds</span>
-<span class="nt">keyframe_distance_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w">  </span><span class="c1"># More keyframes</span>
-<span class="nt">keyframe_distance_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span><span class="w">  </span><span class="c1"># Fewer keyframes</span>
-
-<span class="c1"># Try different window sizes</span>
-<span class="nt">max_keyframes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w">   </span><span class="c1"># Smaller local map</span>
-<span class="nt">max_keyframes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span><span class="w">   </span><span class="c1"># Larger local map</span>
-</pre></div>
-</div>
-<p>Observe how changes affect:</p>
-<ul class="simple">
-<li><p>Trajectory smoothness</p></li>
-<li><p>Computational cost</p></li>
-<li><p>Drift accumulation</p></li>
-</ul>
-<p><strong>Step 8: Final Testing with Full Dataset (1 hour)</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test with full sequence</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_full.launch.py
-
-<span class="c1"># Let it run for the full 7.5 minutes</span>
-<span class="c1"># Check trajectory quality</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="expected-behavior-and-results">
-<h2>📊 8. Expected Behavior and Results<a class="headerlink" href="#expected-behavior-and-results" title="Link to this heading">¶</a></h2>
-<p><strong>Trajectory Characteristics:</strong></p>
-<p>On the <strong>development dataset</strong> (1000 frames):</p>
-<ul class="simple">
-<li><p>✅ Smooth trajectory with clear highway → urban transition</p></li>
-<li><p>✅ Keyframes every ~1 meter (adjust threshold if too many/few)</p></li>
-<li><p>✅ Local map updates as robot moves</p></li>
-<li><p>✅ Minimal drift on straight sections (&lt;5m)</p></li>
-<li><p>✅ Some drift on turns (expected without loop closure)</p></li>
-</ul>
-<p>On the <strong>full dataset</strong> (4541 frames):</p>
-<ul class="simple">
-<li><p>✅ Complete loop trajectory visible</p></li>
-<li><p>✅ Accumulated drift at loop closure point (&lt;100m expected)</p></li>
-<li><p>✅ Demonstrates why backend optimization is needed</p></li>
-<li><p>✅ Shows effectiveness of keyframe-based approach vs scan-to-scan</p></li>
-</ul>
-<p><strong>Visual Verification in RViz:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Expected visualization:
-
-[Point Cloud] - Current scan in white
-[Local Map] - Aggregated keyframes in color
-[Path] - Green line showing trajectory
-[TF Tree] - map → odom → base_link
-
-Timeline (dev dataset):
-0-300: Straight highway section
-300-600: Gentle curves
-600-1000: Urban turns and intersections
-</pre></div>
-</div>
-<p><strong>Console Output:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[odometry_estimator_node]: Received first scan - creating initial keyframe
-[local_map_manager_node]: Added keyframe (window size: 1)
-[odometry_estimator_node]: Created keyframe at distance: 1.02m
-[local_map_manager_node]: Added keyframe (window size: 2)
-...
-[local_map_manager_node]: Added keyframe (window size: 20)
-[local_map_manager_node]: Removed oldest keyframe (window full)
-</pre></div>
-</div>
-<p><strong>Performance Metrics:</strong></p>
-<ul class="simple">
-<li><p><strong>Processing rate:</strong> Should maintain ~10 Hz (real-time)</p></li>
-<li><p><strong>Keyframes created:</strong> ~1000-1500 for full sequence (depends on thresholds)</p></li>
-<li><p><strong>Memory usage:</strong> ~2-3 GB (local map + history)</p></li>
-<li><p><strong>Trajectory error:</strong> &lt;100m drift on full sequence (no loop closure)</p></li>
-</ul>
-<p><strong>Common Issues and Solutions:</strong></p>
-<div class="table-wrapper colwidths-given docutils container">
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 40.0%" />
-<col style="width: 60.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Problem</strong></p></th>
-<th class="head"><p><strong>Solution</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Trajectory drifts severely (&gt;200m)</p></td>
-<td><p>Check pose chaining: <code class="docutils literal notranslate"><span class="pre">T_new</span> <span class="pre">=</span> <span class="pre">T_old</span> <span class="pre">&#64;</span> <span class="pre">delta_T</span></code> (not <code class="docutils literal notranslate"><span class="pre">delta_T</span> <span class="pre">&#64;</span> <span class="pre">T_old</span></code>)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Too many keyframes (&gt;3000)</p></td>
-<td><p>Increase <code class="docutils literal notranslate"><span class="pre">keyframe_distance_threshold</span></code> to 1.5 or 2.0</p></td>
-</tr>
-<tr class="row-even"><td><p>Too few keyframes (&lt;500)</p></td>
-<td><p>Decrease thresholds or check <code class="docutils literal notranslate"><span class="pre">should_create_keyframe()</span></code> logic</p></td>
-</tr>
-<tr class="row-odd"><td><p>Local map not visible</p></td>
-<td><p>Check <code class="docutils literal notranslate"><span class="pre">/slam/local_map</span></code> topic rate, verify <code class="docutils literal notranslate"><span class="pre">update_local_map()</span></code> publishes</p></td>
-</tr>
-<tr class="row-even"><td><p>Processing too slow (&lt;5 Hz)</p></td>
-<td><p>Increase <code class="docutils literal notranslate"><span class="pre">voxel_size</span></code> to 0.3, reduce <code class="docutils literal notranslate"><span class="pre">max_keyframes</span></code> to 15</p></td>
-</tr>
-<tr class="row-odd"><td><p>First scan fails</p></td>
-<td><p>Verify initialization: first scan becomes keyframe_0</p></td>
-</tr>
-<tr class="row-even"><td><p>TF errors in RViz</p></td>
-<td><p>Check frame IDs: should be <code class="docutils literal notranslate"><span class="pre">map</span> <span class="pre">→</span> <span class="pre">odom</span></code></p></td>
+<tr class="row-even"><td><p><strong>Memory Usage</strong></p></td>
+<td><p>Stable (no memory leaks)</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="deliverables">
-<h2>📦 9. Deliverables<a class="headerlink" href="#deliverables" title="Link to this heading">¶</a></h2>
-<p>Submit on <strong>Canvas</strong> as a single ZIP file: <code class="docutils literal notranslate"><span class="pre">rwa2_groupX.zip</span></code> (replace X with your group number)</p>
-<p><strong>Required Contents:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>rwa2_groupX.zip
-├── slam_frontend/           Complete Python package
-│   ├── config/
-│   ├── slam_frontend/
-│   │   ├── odometry_estimator_node.py    (your implementation)
-│   │   ├── local_map_manager_node.py     (your implementation)
-│   │   └── ... (utility files)
-│   ├── launch/
-│   ├── rviz/
+<section id="expected-results">
+<h3>Expected Results<a class="headerlink" href="#expected-results" title="Link to this heading">¶</a></h3>
+<p><strong>Development Dataset (1000 frames):</strong></p>
+<ul class="simple">
+<li><p>Processing time: ~100 seconds (at 10 Hz)</p></li>
+<li><p>Keyframes created: 40-80</p></li>
+<li><p>Final position error: &lt; 10m</p></li>
+<li><p>Z-drift: &lt; 1m</p></li>
+<li><p>Average processing rate: &gt; 8 Hz</p></li>
+</ul>
+<p><strong>Full Dataset (4541 frames):</strong></p>
+<ul class="simple">
+<li><p>Processing time: ~450 seconds (at 10 Hz)</p></li>
+<li><p>Keyframes created: 200-400</p></li>
+<li><p>Final position error: &lt; 100m (no loop closure)</p></li>
+<li><p>Z-drift: &lt; 4m</p></li>
+<li><p>Average processing rate: &gt; 5 Hz</p></li>
+</ul>
+</section>
+</section>
+<section id="submission-requirements">
+<h2>9. Submission Requirements<a class="headerlink" href="#submission-requirements" title="Link to this heading">¶</a></h2>
+<section id="what-to-submit">
+<h3>What to Submit<a class="headerlink" href="#what-to-submit" title="Link to this heading">¶</a></h3>
+<p>Submit a <strong>single ZIP file</strong> named <code class="docutils literal notranslate"><span class="pre">groupX_rwa2.zip</span></code> containing:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>groupX_rwa2/
+├── slam_frontend/               # Your complete package
+│   ├── src/
+│   │   ├── odometry_estimator_node.py    # Your implementation
+│   │   ├── local_map_manager_node.py     # Your implementation
+│   │   └── ...
+│   ├── config/params.yaml       # Your tuned parameters
 │   └── ...
-└── slam_interfaces/         Message package (for completeness)
+├── README.md                     # Required documentation
+├── results/
+│   ├── trajectory_dev.png        # RViz screenshot (dev dataset)
+│   ├── trajectory_full.png       # RViz screenshot (full dataset)
+│   └── verification_output.txt   # Copy of verification results
+└── report.pdf                    # Optional: Analysis report
 </pre></div>
 </div>
-<p><strong>Your submission must include:</strong></p>
+</section>
+<section id="readme-requirements">
+<h3>README Requirements<a class="headerlink" href="#readme-requirements" title="Link to this heading">¶</a></h3>
+<p>Your <code class="docutils literal notranslate"><span class="pre">README.md</span></code> must include:</p>
 <ol class="arabic">
-<li><p><strong>Implemented Nodes</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">odometry_estimator_node.py</span></code> — All TODO sections completed</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">local_map_manager_node.py</span></code> — All TODO sections completed</p></li>
-</ul>
-</li>
-<li><p><strong>Launch Files</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rwa2_dev.launch.py</span></code> — Must work with provided dev dataset</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rwa2_full.launch.py</span></code> — Must work with provided full dataset</p></li>
-</ul>
-</li>
-<li><p><strong>README.md</strong> containing:</p>
-<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># RWA2 - Keyframe-Based LiDAR Odometry</span>
-
-<span class="gu">## Group Members</span>
-<span class="k">-</span><span class="w"> </span>Student 1 Name (UID) - Implemented X
-<span class="k">-</span><span class="w"> </span>Student 2 Name (UID) - Implemented Y
-<span class="k">-</span><span class="w"> </span>Student 3 Name (UID) - Implemented Z
-<span class="k">-</span><span class="w"> </span>Student 4 Name (UID) - Implemented W
-
-<span class="gu">## Installation</span>
+<li><p><strong>Build Instructions</strong></p>
+<p>Example:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gu">## Build Instructions</span>
 <span class="sb">```bash</span>
-pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
+<span class="nb">cd</span><span class="w"> </span>~/ros2_ws
+colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>slam_frontend<span class="w"> </span>slam_interfaces
 <span class="nb">source</span><span class="w"> </span>install/setup.bash
 <span class="sb">```</span>
-
-<span class="gu">## Usage</span>
-<span class="sb">```bash</span>
-<span class="c1"># Development dataset</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
-
-<span class="c1"># Full dataset</span>
-ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_full.launch.py
-<span class="sb">```</span>
-
-<span class="gu">## Parameter Tuning</span>
-We adjusted the following parameters:
-<span class="k">-</span><span class="w"> </span>keyframe_distance_threshold: X.X m (reason)
-<span class="k">-</span><span class="w"> </span>keyframe_rotation_threshold: XX° (reason)
-<span class="k">-</span><span class="w"> </span>max_keyframes: XX (reason)
-
-<span class="gu">## Results</span>
-<span class="k">-</span><span class="w"> </span>Dev dataset: ~X keyframes created, Y m drift
-<span class="k">-</span><span class="w"> </span>Full dataset: ~X keyframes created, Y m final drift
-
-<span class="gu">## Challenges and Solutions</span>
-[Describe any issues you encountered and how you solved them]
 </pre></div>
 </div>
 </li>
-<li><p><strong>Visualization File</strong></p>
+<li><p><strong>Run Instructions:</strong></p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gu">## How to Run</span>
+<span class="sb">```bash</span>
+<span class="c1"># Terminal 1: Launch nodes</span>
+ros2<span class="w"> </span>launch<span class="w"> </span>slam_frontend<span class="w"> </span>rwa2_dev.launch.py
+
+<span class="c1"># Terminal 2: Visualization</span>
+rviz2<span class="w"> </span>-d<span class="w"> </span>src/slam_frontend/rviz/rwa2.rviz
+<span class="sb">```</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Parameter Choices:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rwa2.rviz</span></code> (RViz config) OR</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rwa2.json</span></code> (Foxglove config)</p></li>
-<li><p><strong>Not both</strong> — choose one</p></li>
+<li><p>Final values chosen</p></li>
+<li><p>Brief justification</p></li>
+<li><p>Any environment-specific tuning</p></li>
 </ul>
 </li>
-<li><p><strong>Optional: Results Analysis</strong> (for bonus points)</p>
+<li><p><strong>Results Summary:</strong></p>
 <ul class="simple">
-<li><p>Screenshots showing trajectory on dev and full datasets</p></li>
-<li><p>Plot of keyframe creation over time</p></li>
-<li><p>Analysis of drift accumulation</p></li>
-<li><p>Comparison of different parameter settings</p></li>
+<li><p>Processing rate achieved</p></li>
+<li><p>Number of keyframes</p></li>
+<li><p>Observed drift</p></li>
+<li><p>Any issues encountered</p></li>
+</ul>
+</li>
+<li><p><strong>Implementation Notes:</strong></p>
+<ul class="simple">
+<li><p>Key design decisions</p></li>
+<li><p>Challenges faced</p></li>
+<li><p>What you learned</p></li>
 </ul>
 </li>
 </ol>
-<p><strong>Submission Checklist:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Before submitting:
-
-✅ Code compiles without errors
-✅ Launch files work on dev dataset
-✅ Launch files work on full dataset (test at least once)
-✅ README.md is complete
-✅ All group member names included
-✅ No modified utility files (icp_utils.py, etc.)
-✅ No dataset files included in ZIP
-✅ Clean submission (no build/, install/, log/ folders)
-</pre></div>
-</div>
-<p><strong>Submission Deadline:</strong></p>
-<ul class="simple">
-<li><p><strong>Due:</strong> November 18, 2025, 11:59 PM</p></li>
-<li><p><strong>Late Policy:</strong> 10% penalty per day (max 3 days)</p></li>
-<li><p><strong>No submissions accepted after:</strong> November 21, 2025, 11:59 PM</p></li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><strong>Important:</strong></p>
-<ul class="simple">
-<li><p>Do <strong>NOT</strong> include dataset in your ZIP (provided separately)</p></li>
-<li><p>Do <strong>NOT</strong> modify provided utility files</p></li>
-<li><p>Do <strong>NOT</strong> include build artifacts (<code class="docutils literal notranslate"><span class="pre">build/</span></code>, <code class="docutils literal notranslate"><span class="pre">install/</span></code>, <code class="docutils literal notranslate"><span class="pre">log/</span></code>)</p></li>
-<li><p>Do <strong>NOT</strong> include the entire workspace (only two packages)</p></li>
-</ul>
-</div>
 </section>
-<section id="grading-rubric-30-pts">
-<h2>📈 10. Grading Rubric (30 pts)<a class="headerlink" href="#grading-rubric-30-pts" title="Link to this heading">¶</a></h2>
-<div class="table-wrapper colwidths-given docutils container">
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50.0%" />
-<col style="width: 10.0%" />
-<col style="width: 40.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Criterion</strong></p></th>
-<th class="head"><p><strong>Points</strong></p></th>
-<th class="head"><p><strong>Evaluation Details</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Keyframe Selection Logic (Node 1)</strong></p></td>
-<td><p>10</p></td>
-<td><ul class="simple">
-<li><p>Distance computation correct (3 pts)</p></li>
-<li><p>Rotation computation correct (3 pts)</p></li>
-<li><p>Threshold checking logic correct (2 pts)</p></li>
-<li><p>Parameters loaded from YAML (1 pt)</p></li>
-<li><p>Keyframe messages published correctly (1 pt)</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><strong>Local Map Management (Node 2)</strong></p></td>
-<td><p>10</p></td>
-<td><ul class="simple">
-<li><p>Deque-based keyframe storage (3 pts)</p></li>
-<li><p>Correct transformation to map frame (3 pts)</p></li>
-<li><p>Proper merging and downsampling (2 pts)</p></li>
-<li><p>Local map published at correct rate (2 pts)</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><strong>Odometry Estimation (Node 1)</strong></p></td>
-<td><p>5</p></td>
-<td><ul class="simple">
-<li><p>ICP transformation chained correctly (2 pts)</p></li>
-<li><p>Odometry messages valid and published (2 pts)</p></li>
-<li><p>TF broadcast functional (1 pt)</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><strong>Integration &amp; Quality</strong></p></td>
-<td><p>5</p></td>
-<td><ul class="simple">
-<li><p>Nodes communicate correctly (1 pt)</p></li>
-<li><p>Launch files execute without errors (1 pt)</p></li>
-<li><p>Visualization clear and accurate (1 pt)</p></li>
-<li><p>README complete with all sections (1 pt)</p></li>
-<li><p>Code quality (comments, structure) (1 pt)</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Detailed Point Breakdown:</strong></p>
-<p><strong>Keyframe Selection (10 pts):</strong></p>
+<section id="submission-checklist">
+<h3>Submission Checklist<a class="headerlink" href="#submission-checklist" title="Link to this heading">¶</a></h3>
+<p>Before submitting, ensure:</p>
 <ul class="simple">
-<li><p><strong>Distance computation (3 pts):</strong></p>
-<ul>
-<li><p>3 pts: Correct use of <code class="docutils literal notranslate"><span class="pre">compute_distance()</span></code>, proper comparison with threshold</p></li>
-<li><p>2 pts: Minor issues (wrong comparison operator, off-by-one)</p></li>
-<li><p>1 pt: Attempted but incorrect implementation</p></li>
-<li><p>0 pts: Not implemented or completely wrong</p></li>
+<li><p>☐ Both nodes implemented and working</p></li>
+<li><p>☐ Parameters tuned in <code class="docutils literal notranslate"><span class="pre">params.yaml</span></code></p></li>
+<li><p>☐ README.md complete with all sections</p></li>
+<li><p>☐ RViz screenshots included</p></li>
+<li><p>☐ Verification output saved</p></li>
+<li><p>☐ Code is well-commented</p></li>
+<li><p>☐ No modified utility files (unless documented)</p></li>
+<li><p>☐ Package builds without errors</p></li>
+<li><p>☐ Tested with both dev and full datasets</p></li>
+<li><p>☐ ZIP file follows naming convention</p></li>
 </ul>
-</li>
-<li><p><strong>Rotation computation (3 pts):</strong></p>
-<ul>
-<li><p>3 pts: Correct use of <code class="docutils literal notranslate"><span class="pre">compute_rotation_angle()</span></code>, proper comparison</p></li>
-<li><p>2 pts: Minor issues (degrees vs radians confusion)</p></li>
-<li><p>1 pt: Attempted but incorrect</p></li>
-<li><p>0 pts: Not implemented</p></li>
-</ul>
-</li>
-<li><p><strong>Threshold checking (2 pts):</strong></p>
-<ul>
-<li><p>2 pts: Correct OR logic (distance OR rotation exceeds threshold)</p></li>
-<li><p>1 pt: Uses AND instead of OR (still partially functional)</p></li>
-<li><p>0 pts: Logic missing or completely wrong</p></li>
-</ul>
-</li>
-<li><p><strong>Parameters (1 pt):</strong></p>
-<ul>
-<li><p>1 pt: Loads parameters from YAML correctly</p></li>
-<li><p>0 pts: Hardcoded values</p></li>
-</ul>
-</li>
-<li><p><strong>Publishing (1 pt):</strong></p>
-<ul>
-<li><p>1 pt: Keyframe message published with correct fields</p></li>
-<li><p>0 pts: Not publishing or incorrect message format</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>Local Map Management (10 pts):</strong></p>
+</section>
+</section>
+<section id="grading-rubric">
+<h2>10. Grading Rubric<a class="headerlink" href="#grading-rubric" title="Link to this heading">¶</a></h2>
+<p><strong>Total: 30 points</strong></p>
+<p><strong>Keyframe Selection (5 pts):</strong></p>
 <ul class="simple">
-<li><p><strong>Keyframe storage (3 pts):</strong></p>
+<li><p><strong>Logic implementation (3 pts):</strong></p>
 <ul>
-<li><p>3 pts: Deque used correctly, max size enforced</p></li>
-<li><p>2 pts: Storage works but doesn’t use deque or size limit</p></li>
-<li><p>1 pt: Basic storage but has issues</p></li>
-<li><p>0 pts: Not implemented</p></li>
-</ul>
-</li>
-<li><p><strong>Transformation (3 pts):</strong></p>
-<ul>
-<li><p>3 pts: All keyframes transformed to map frame correctly</p></li>
-<li><p>2 pts: Transformation attempted but minor errors</p></li>
-<li><p>1 pt: Partial implementation</p></li>
-<li><p>0 pts: Not implemented</p></li>
-</ul>
-</li>
-<li><p><strong>Merging/downsampling (2 pts):</strong></p>
-<ul>
-<li><p>2 pts: Uses provided utilities correctly</p></li>
-<li><p>1 pt: Attempted but incomplete</p></li>
+<li><p>3 pts: Both distance and rotation thresholds work correctly</p></li>
+<li><p>2 pts: One threshold works, other has issues</p></li>
+<li><p>1 pt: Attempted but buggy</p></li>
 <li><p>0 pts: Not implemented</p></li>
 </ul>
 </li>
 <li><p><strong>Publishing (2 pts):</strong></p>
 <ul>
-<li><p>2 pts: Local map published at reasonable rate</p></li>
-<li><p>1 pt: Published but too slow or has issues</p></li>
+<li><p>2 pts: Keyframe message published correctly with pose</p></li>
+<li><p>1 pt: Published but missing fields or wrong format</p></li>
 <li><p>0 pts: Not published</p></li>
 </ul>
 </li>
 </ul>
-<p><strong>Odometry Estimation (5 pts):</strong></p>
+<p><strong>Local Map Management (5 pts):</strong></p>
 <ul class="simple">
-<li><p><strong>Pose chaining (2 pts):</strong></p>
+<li><p><strong>Sliding window (2 pts):</strong></p>
 <ul>
-<li><p>2 pts: Correct matrix multiplication order</p></li>
-<li><p>1 pt: Minor errors but general approach correct</p></li>
-<li><p>0 pts: Wrong or not implemented</p></li>
+<li><p>2 pts: Fixed-size buffer correctly maintained</p></li>
+<li><p>1 pt: Buffer works but size management issues</p></li>
+<li><p>0 pts: No sliding window</p></li>
 </ul>
 </li>
-<li><p><strong>Message publishing (2 pts):</strong></p>
+<li><p><strong>Point cloud merging (2 pts):</strong></p>
 <ul>
-<li><p>2 pts: Odom and path published correctly</p></li>
-<li><p>1 pt: One of two works</p></li>
-<li><p>0 pts: Neither works</p></li>
+<li><p>2 pts: Clouds transformed and merged correctly</p></li>
+<li><p>1 pt: Merged but coordinate frame issues</p></li>
+<li><p>0 pts: Not merged or severe errors</p></li>
 </ul>
 </li>
-<li><p><strong>TF broadcast (1 pt):</strong></p>
+<li><p><strong>Map publishing (1 pt):</strong></p>
 <ul>
-<li><p>1 pt: Map→odom transform broadcast</p></li>
-<li><p>0 pts: Not broadcast or incorrect</p></li>
+<li><p>1 pt: Local map published and downsampled</p></li>
+<li><p>0 pts: Not published</p></li>
 </ul>
 </li>
 </ul>
-<p><strong>Integration &amp; Quality (5 pts):</strong></p>
+<p><strong>Scan Registration (5 pts):</strong></p>
 <ul class="simple">
-<li><p>Each criterion worth 1 point (pass/fail)</p></li>
+<li><p><strong>ICP usage (3 pts):</strong></p>
+<ul>
+<li><p>3 pts: ICP called correctly with proper parameters</p></li>
+<li><p>2 pts: ICP works but suboptimal parameters</p></li>
+<li><p>1 pt: Attempted but errors</p></li>
+<li><p>0 pts: Not implemented</p></li>
 </ul>
-<p><strong>Deductions:</strong></p>
+</li>
+<li><p><strong>Scan-to-map matching (2 pts):</strong></p>
+<ul>
+<li><p>2 pts: Uses local map when available</p></li>
+<li><p>1 pt: Only scan-to-scan matching</p></li>
+<li><p>0 pts: No matching</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Trajectory Quality (5 pts):</strong></p>
 <ul class="simple">
-<li><p><strong>-5 pts:</strong> Modified provided utility files</p></li>
-<li><p><strong>-3 pts:</strong> Launch file doesn’t work</p></li>
-<li><p><strong>-2 pts:</strong> Missing or incomplete README</p></li>
-<li><p><strong>-2 pts:</strong> Hardcoded paths or parameters</p></li>
-<li><p><strong>-2 pts:</strong> Included dataset in submission</p></li>
-<li><p><strong>-10 pts:</strong> Trajectory completely broken (&gt;90% frames fail)</p></li>
+<li><p>Evaluated on <strong>dev dataset</strong> (1000 frames):</p>
+<ul>
+<li><p>5 pts: Smooth trajectory, &lt; 10m drift</p></li>
+<li><p>4 pts: Minor jumps, &lt; 20m drift</p></li>
+<li><p>3 pts: Some issues, &lt; 30m drift</p></li>
+<li><p>2 pts: Major issues but recognizable path</p></li>
+<li><p>1 pt: Trajectory visible but very poor</p></li>
+<li><p>0 pts: No trajectory or completely wrong</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Processing Performance (5 pts):</strong></p>
+<ul class="simple">
+<li><p><strong>Speed requirement:</strong></p>
+<ul>
+<li><p>5 pts: ≥ 10 Hz</p></li>
+<li><p>4 pts: 8-10 Hz</p></li>
+<li><p>3 pts: 5-8 Hz</p></li>
+<li><p>2 pts: 3-5 Hz</p></li>
+<li><p>1 pt: 1-3 Hz</p></li>
+<li><p>0 pts: &lt; 1 Hz</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Integration &amp; Documentation (5 pts):</strong></p>
+<ul class="simple">
+<li><p><strong>System integration (2 pts):</strong></p>
+<ul>
+<li><p>2 pts: Both nodes work together seamlessly</p></li>
+<li><p>1 pt: Some integration issues</p></li>
+<li><p>0 pts: Nodes don’t work together</p></li>
+</ul>
+</li>
+<li><p><strong>README completeness (2 pts):</strong></p>
+<ul>
+<li><p>2 pts: All sections present and clear</p></li>
+<li><p>1 pt: Missing some sections</p></li>
+<li><p>0 pts: Minimal or missing</p></li>
+</ul>
+</li>
+<li><p><strong>Code quality (1 pt):</strong></p>
+<ul>
+<li><p>1 pt: Clean, commented, follows conventions</p></li>
+<li><p>0 pts: Messy or undocumented</p></li>
+</ul>
+</li>
 </ul>
 <p><strong>Bonus Points (up to +3 pts):</strong></p>
 <ul class="simple">
-<li><p><strong>+1 pt:</strong> Excellent code documentation and comments</p></li>
-<li><p><strong>+1 pt:</strong> Results analysis with plots and screenshots</p></li>
-<li><p><strong>+1 pt:</strong> Parameter tuning analysis with justification</p></li>
-<li><p><strong>+2 pts:</strong> Implement advanced features (e.g., adaptive thresholds, map pruning)</p></li>
+<li><p><strong>+1 pt:</strong> Excellent documentation</p></li>
+<li><p><strong>+1 pt:</strong> Results analysis with plots</p></li>
+<li><p><strong>+1 pt:</strong> Creative improvements</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Trajectory Quality Expectations:</strong></p>
-<p>This assignment does NOT have loop closure or backend optimization.
-Some drift is expected and acceptable:</p>
-<ul class="simple">
-<li><p>Dev dataset (1000 frames): &lt;10m cumulative drift ✅</p></li>
-<li><p>Full dataset (4541 frames): &lt;100m cumulative drift ✅</p></li>
-</ul>
-<p>Focus is on implementation correctness, not perfect accuracy.</p>
-</div>
-</section>
-<section id="tips-for-success">
-<h2>💡 11. Tips for Success<a class="headerlink" href="#tips-for-success" title="Link to this heading">¶</a></h2>
-<p><strong>Time Management:</strong></p>
-<ul class="simple">
-<li><p><strong>Day 1 (Nov 6):</strong> Setup, explore starter code, understand utilities (2 hrs)</p></li>
-<li><p><strong>Days 2-4 (Nov 7-9):</strong> Implement Node 1 - Odometry Estimator (6 hrs)</p></li>
-<li><p><strong>Days 5-7 (Nov 10-12):</strong> Implement Node 2 - Local Map Manager (6 hrs)</p></li>
-<li><p><strong>Days 8-9 (Nov 13-14):</strong> Integration testing, parameter tuning (4 hrs)</p></li>
-<li><p><strong>Days 10-11 (Nov 15-16):</strong> Full dataset testing, documentation (3 hrs)</p></li>
-<li><p><strong>Day 12 (Nov 17):</strong> Final review, README, submission prep (2 hrs)</p></li>
-<li><p><strong>Buffer:</strong> November 18 for last-minute issues</p></li>
-</ul>
-<p><strong>Debugging Strategies:</strong></p>
-<ol class="arabic">
-<li><p><strong>Use ROS 2 tools:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if topics are publishing</span>
-ros2<span class="w"> </span>topic<span class="w"> </span>list
-ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/odom
-ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/slam/new_keyframe<span class="w"> </span>--once
-
-<span class="c1"># Monitor TF tree</span>
-ros2<span class="w"> </span>run<span class="w"> </span>tf2_tools<span class="w"> </span>view_frames
-evince<span class="w"> </span>frames.pdf
-
-<span class="c1"># Check node status</span>
-ros2<span class="w"> </span>node<span class="w"> </span>list
-ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/odometry_estimator
-</pre></div>
-</div>
-</li>
-<li><p><strong>Add logging:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use different log levels</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Keyframe created at </span><span class="si">{</span><span class="n">distance</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">m&#39;</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pose: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_pose</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Local map not ready&#39;</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;ICP alignment failed!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</li>
-<li><p><strong>Test incrementally:</strong></p>
-<ul class="simple">
-<li><p>Get basic odometry working first (without keyframe logic)</p></li>
-<li><p>Add keyframe selection next</p></li>
-<li><p>Finally integrate local map manager</p></li>
-<li><p>Test each component before moving to next</p></li>
-</ul>
-</li>
-<li><p><strong>Use visualization:</strong></p>
-<ul class="simple">
-<li><p>Keep RViz open while developing</p></li>
-<li><p>Check if trajectory path appears</p></li>
-<li><p>Verify point clouds are colored correctly</p></li>
-<li><p>Watch TF tree for errors</p></li>
-</ul>
-</li>
-</ol>
-<p><strong>Common Pitfalls:</strong></p>
-<div class="table-wrapper colwidths-given docutils container">
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50.0%" />
-<col style="width: 50.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Pitfall</strong></p></th>
-<th class="head"><p><strong>Solution</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Pose chaining order wrong</p></td>
-<td><p>Always: <code class="docutils literal notranslate"><span class="pre">T_new</span> <span class="pre">=</span> <span class="pre">T_old</span> <span class="pre">&#64;</span> <span class="pre">delta_T</span></code> (not reversed)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Keyframes created too frequently</p></td>
-<td><p>Increase thresholds in <code class="docutils literal notranslate"><span class="pre">params.yaml</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Local map never updates</p></td>
-<td><p>Check that <code class="docutils literal notranslate"><span class="pre">update_local_map()</span></code> is called in callback</p></td>
-</tr>
-<tr class="row-odd"><td><p>First scan crashes</p></td>
-<td><p>Handle <code class="docutils literal notranslate"><span class="pre">first_scan</span></code> flag properly in initialization</p></td>
-</tr>
-<tr class="row-even"><td><p>Running out of memory</p></td>
-<td><p>Reduce <code class="docutils literal notranslate"><span class="pre">max_keyframes</span></code> or increase <code class="docutils literal notranslate"><span class="pre">voxel_size</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>TF warnings in RViz</p></td>
-<td><p>Ensure frame IDs match: <code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">odom</span></code>, <code class="docutils literal notranslate"><span class="pre">base_link</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Parameter Tuning Guidelines:</strong></p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># For straight sections (highway):</span>
-<span class="nt">keyframe_distance_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.5-2.0</span><span class="w">  </span><span class="c1"># Fewer keyframes needed</span>
-
-<span class="c1"># For turns and complex areas:</span>
-<span class="nt">keyframe_distance_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5-1.0</span><span class="w">  </span><span class="c1"># More keyframes needed</span>
-
-<span class="c1"># Rotation threshold:</span>
-<span class="nt">keyframe_rotation_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10-20</span><span class="w">    </span><span class="c1"># 15° is good default</span>
-
-<span class="c1"># Local map size:</span>
-<span class="nt">max_keyframes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15-25</span><span class="w">                  </span><span class="c1"># 20 is good default</span>
-
-<span class="c1"># Downsampling:</span>
-<span class="nt">voxel_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1-0.3</span><span class="w">                   </span><span class="c1"># 0.2 is good default</span>
-</pre></div>
-</div>
-<p><strong>Getting Help:</strong></p>
-<ol class="arabic simple">
-<li><p><strong>Office Hours:</strong> See syllabus for schedule</p></li>
-<li><p><strong>Piazza:</strong> Post questions (don’t share code!)</p></li>
-<li><p><strong>Starter Code Issues:</strong> Check provided utilities first</p></li>
-<li><p><strong>ROS 2 Questions:</strong> Consult official documentation</p></li>
-<li><p><strong>Debugging:</strong> Use logging and RViz extensively</p></li>
-</ol>
 </section>
 <section id="learning-outcomes">
-<h2>📚 12. Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading">¶</a></h2>
+<h2>11. Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading">¶</a></h2>
 <p>By completing this assignment, you will:</p>
 <ul class="simple">
 <li><p>✅ <strong>Understand keyframe-based SLAM architectures</strong></p>
@@ -2126,7 +1112,7 @@ ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </s
 <p>You’re building the <strong>frontend</strong> of a modern LiDAR SLAM system!</p>
 </section>
 <section id="references">
-<h2>📖 13. References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<h2>13. References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
 <p><strong>Primary References:</strong></p>
 <ul class="simple">
 <li><p>Zhang, J. &amp; Singh, S. (2014). <em>LOAM: Lidar Odometry and Mapping in Real-time.</em> Robotics: Science and Systems (RSS).</p></li>
@@ -2145,8 +1131,6 @@ ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </s
 <li><p>Besl, P. &amp; McKay, N. (1992). <em>A Method for Registration of 3-D Shapes.</em> IEEE Transactions on Pattern Analysis and Machine Intelligence (PAMI).</p></li>
 <li><p>Rusinkiewicz, S. &amp; Levoy, M. (2001). <em>Efficient Variants of the ICP Algorithm.</em> 3DIM.</p></li>
 </ul>
-<hr class="docutils" />
-<p><strong>Focus on the SLAM logic — we’ve handled the infrastructure for you. Good luck!</strong> 🚀</p>
 </section>
 </section>
 
@@ -2197,52 +1181,44 @@ ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </s
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Assignment 2: Building a Keyframe-Based LiDAR Odometry Pipeline</a><ul>
-<li><a class="reference internal" href="#objective">🎯 1. Objective</a></li>
-<li><a class="reference internal" href="#background">📚 2. Background</a></li>
-<li><a class="reference internal" href="#kitti-dataset-and-ros-2-bag-files">📂 3. KITTI Dataset and ROS 2 Bag Files</a><ul>
+<li><a class="reference internal" href="#">Assignment 2</a><ul>
+<li><a class="reference internal" href="#objective">1. Objective</a></li>
+<li><a class="reference internal" href="#background">2. Background</a></li>
+<li><a class="reference internal" href="#kitti-dataset-and-ros-2-bag-files">3. KITTI Dataset and ROS 2 Bag Files</a><ul>
 <li><a class="reference internal" href="#dataset-overview">Dataset Overview</a></li>
 <li><a class="reference internal" href="#ros-2-bag-files-provided">ROS 2 Bag Files Provided</a></li>
 <li><a class="reference internal" href="#topics-in-the-bag-files">Topics in the Bag Files</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#assignment-tasks">🛠️ 4. Assignment Tasks</a><ul>
+<li><a class="reference internal" href="#assignment-tasks">4. Assignment Tasks</a><ul>
 <li><a class="reference internal" href="#node-1-odometry-estimator-node">Node 1 — odometry_estimator_node</a></li>
 <li><a class="reference internal" href="#node-2-local-map-manager-node">Node 2 — local_map_manager_node</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#provided-starter-package">🚀 5. Provided Starter Package</a><ul>
-<li><a class="reference internal" href="#provided-utilities">Provided Utilities</a></li>
-<li><a class="reference internal" href="#message-definition">Message Definition</a></li>
+<li><a class="reference internal" href="#performance-optimization-tips">5. Performance Optimization Tips</a></li>
+<li><a class="reference internal" href="#getting-started">6. Getting Started</a><ul>
+<li><a class="reference internal" href="#step-1-implement-node-1">Step 1: Implement Node 1</a></li>
+<li><a class="reference internal" href="#step-2-implement-node-2">Step 2: Implement Node 2</a></li>
+<li><a class="reference internal" href="#step-3-tune-parameters">Step 3: Tune Parameters</a></li>
+<li><a class="reference internal" href="#step-4-test-with-dev-full-dataset">Step 4: Test with Dev/Full Dataset</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#setup-and-command-execution-sequence">🔧 6. Setup and Command Execution Sequence</a><ul>
-<li><a class="reference internal" href="#initial-setup-one-time">Initial Setup (One-Time)</a></li>
-<li><a class="reference internal" href="#understanding-the-command-workflow">Understanding the Command Workflow</a></li>
-<li><a class="reference internal" href="#development-workflow-daily-use">Development Workflow (Daily Use)</a></li>
-<li><a class="reference internal" href="#running-your-implementation">Running Your Implementation</a></li>
-<li><a class="reference internal" href="#monitoring-and-debugging">Monitoring and Debugging</a></li>
-<li><a class="reference internal" href="#complete-command-sequence-by-timeline">Complete Command Sequence by Timeline</a></li>
-<li><a class="reference internal" href="#troubleshooting-commands">Troubleshooting Commands</a></li>
-<li><a class="reference internal" href="#quick-reference-card">Quick Reference Card</a></li>
+<li><a class="reference internal" href="#provided-package-structure">7. Provided Package Structure</a></li>
+<li><a class="reference internal" href="#testing-and-evaluation">8. Testing and Evaluation</a><ul>
+<li><a class="reference internal" href="#verify-your-implementation">Verify Your Implementation</a></li>
+<li><a class="reference internal" href="#evaluation-criteria">Evaluation Criteria</a></li>
+<li><a class="reference internal" href="#expected-results">Expected Results</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#implementation-guide">📋 7. Implementation Guide</a><ul>
-<li><a class="reference internal" href="#step-1-setup-and-build-10-minutes">Step 1: Setup and Build (10 minutes)</a></li>
-<li><a class="reference internal" href="#step-2-understand-the-templates-20-minutes">Step 2: Understand the Templates (20 minutes)</a></li>
-<li><a class="reference internal" href="#step-3-test-provided-code-10-minutes">Step 3: Test Provided Code (10 minutes)</a></li>
-<li><a class="reference internal" href="#step-4-implement-node-1-odometry-estimator-4-6-hours">Step 4: Implement Node 1 - Odometry Estimator (4-6 hours)</a></li>
-<li><a class="reference internal" href="#step-5-implement-node-2-local-map-manager-3-5-hours">Step 5: Implement Node 2 - Local Map Manager (3-5 hours)</a></li>
-<li><a class="reference internal" href="#step-6-integration-testing-2-3-hours">Step 6: Integration Testing (2-3 hours)</a></li>
-<li><a class="reference internal" href="#step-7-final-validation-1-hour">Step 7: Final Validation (1 hour)</a></li>
+<li><a class="reference internal" href="#submission-requirements">9. Submission Requirements</a><ul>
+<li><a class="reference internal" href="#what-to-submit">What to Submit</a></li>
+<li><a class="reference internal" href="#readme-requirements">README Requirements</a></li>
+<li><a class="reference internal" href="#submission-checklist">Submission Checklist</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#expected-behavior-and-results">📊 8. Expected Behavior and Results</a></li>
-<li><a class="reference internal" href="#deliverables">📦 9. Deliverables</a></li>
-<li><a class="reference internal" href="#grading-rubric-30-pts">📈 10. Grading Rubric (30 pts)</a></li>
-<li><a class="reference internal" href="#tips-for-success">💡 11. Tips for Success</a></li>
-<li><a class="reference internal" href="#learning-outcomes">📚 12. Learning Outcomes</a></li>
-<li><a class="reference internal" href="#references">📖 13. References</a></li>
+<li><a class="reference internal" href="#grading-rubric">10. Grading Rubric</a></li>
+<li><a class="reference internal" href="#learning-outcomes">11. Learning Outcomes</a></li>
+<li><a class="reference internal" href="#references">13. References</a></li>
 </ul>
 </li>
 </ul>
@@ -2263,5 +1239,6 @@ ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </s
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

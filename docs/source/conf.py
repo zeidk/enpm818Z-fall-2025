@@ -1,4 +1,3 @@
-import os, sys
 from datetime import date
 
 project = "ENPM818Z-FALL-2025"
@@ -17,7 +16,6 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx_design",
     "sphinxcontrib.pseudocode",
-    "sphinx_fontawesome",
 ]
 
 

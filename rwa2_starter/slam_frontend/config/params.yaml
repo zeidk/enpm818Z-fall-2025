@@ -1,0 +1,61 @@
+# SLAM Frontend Parameters
+# 
+# These parameters control keyframe selection and local map management.
+# Adjust these values to optimize performance for your KITTI dataset.
+
+# Odometry Estimator Parameters
+odometry_estimator_node:
+  ros__parameters:
+    # Keyframe selection thresholds
+    keyframe_distance_threshold: 3.0    # Increased to reduce keyframes
+    keyframe_rotation_threshold: 30.0   # Increased to reduce keyframes
+    voxel_size: 0.3                    # Balanced for speed and detail
+    
+    # Notes on tuning:
+    # - Smaller distance_threshold = more keyframes = better accuracy but slower
+    # - Larger distance_threshold = fewer keyframes = faster but more drift
+    # - Typical range for distance: 0.5 - 2.0 meters
+    # - Typical range for rotation: 10 - 20 degrees
+
+# Local Map Manager Parameters
+local_map_manager_node:
+  ros__parameters:
+    # Sliding window size
+    max_keyframes: 10    # Number of keyframes to keep in local map
+    
+    # Downsampling parameter
+    voxel_size: 0.4      # meters - voxel grid size for downsampling
+    
+    # Notes on tuning:
+    # - More keyframes = larger map = better context but slower ICP
+    # - Fewer keyframes = smaller map = faster but less stable
+    # - Larger voxel_size = fewer points = faster but less detailed
+    # - Typical range for max_keyframes: 15 - 30
+    # - Typical range for voxel_size: 0.1 - 0.3 meters
+
+# Parameter Tuning Guide
+# ======================
+#
+# For HIGHWAY sections (straight driving):
+#   - Increase keyframe_distance_threshold to 1.5-2.0
+#   - Fewer keyframes needed due to limited scene change
+#
+# For URBAN sections (turns, intersections):
+#   - Decrease keyframe_distance_threshold to 0.5-1.0
+#   - More keyframes needed to capture rapid scene changes
+#
+# If processing is SLOW (<5 Hz):
+#   - Increase voxel_size to 0.3
+#   - Reduce max_keyframes to 15
+#   - Increase keyframe_distance_threshold
+#
+# If trajectory has HIGH DRIFT:
+#   - Decrease keyframe_distance_threshold
+#   - Increase max_keyframes to 25-30
+#   - Decrease voxel_size to 0.15
+#
+# If creating TOO MANY keyframes (>2000 for full sequence):
+#   - Increase both thresholds
+#
+# If creating TOO FEW keyframes (<500 for full sequence):
+#   - Decrease both thresholds
