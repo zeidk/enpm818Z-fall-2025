@@ -17,7 +17,7 @@ Assignment 2
 
   - Demonstration of the output: `location <https://drive.google.com/file/d/1iegtrsupj4XY0SIrvhmpgWKO9CifDmY9/view?usp=sharing>`_.
   - Two pre-recorded bag files: `location <https://drive.google.com/drive/folders/1ni7jXjCE8NncyLBbYpta3CpqVkbWhFDU?usp=sharing>`_.
-  - Starter package: `location <https://drive.google.com/drive/folders/1ni7jXjCE8NncyLBbYpta3CpqVkbWhFDU?usp=sharing>`_.
+  - Starter package: `location <https://github.com/zeidk/enpm818Z-fall-2025/tree/main/rwa2_starter>`_.
 
 
 ---------------------------------------------------------
