@@ -1,2 +1,2 @@
-# enpm818Z_fall2025
+# enpm818Z-fall-2025
 Python and ROS code (two branches)
