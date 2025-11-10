@@ -12,6 +12,13 @@ Assignment 2
 :Language: Python (ROS 2, Open3D)
 
 
+.. note::
+  Provided resource:
+
+  - Demonstration of the output: `location <https://drive.google.com/file/d/1iegtrsupj4XY0SIrvhmpgWKO9CifDmY9/view?usp=sharing>`_.
+  - Two pre-recorded bag files: `location <https://drive.google.com/drive/folders/1ni7jXjCE8NncyLBbYpta3CpqVkbWhFDU?usp=sharing>`_.
+  - Starter package: `location <https://github.com/zeidk/enpm818Z-fall-2025/tree/main/rwa2_starter>`_.
+
 
 ---------------------------------------------------------
 1. Objective
@@ -25,7 +32,7 @@ Build a simplified **LiDAR odometry pipeline** that estimates vehicle trajectory
 You will be provided with helper utilities and a complete starter package. Your task is to implement the **core SLAM logic** in two ROS 2 nodes.
 
 .. note::
-  See `demo <https://drive.google.com/file/d/1iegtrsupj4XY0SIrvhmpgWKO9CifDmY9/view?usp=sharing>`_.
+  
 
 ---------------------------------------------------------
 2. Background
@@ -75,11 +82,6 @@ Dataset Overview
 
 ROS 2 Bag Files Provided
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-.. note::
-  Two pre-recorded bag files are provided to you: `location <https://drive.google.com/drive/folders/1ni7jXjCE8NncyLBbYpta3CpqVkbWhFDU?usp=sharing>`_.
-
 
 
 

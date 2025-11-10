@@ -65,49 +65,10 @@ Assignments and Evaluation
 
 Late submissions incur a 10% deduction per day (maximum 3 days). Beyond 3 days, submissions receive zero credit.
 
-Weekly Schedule (Tentative)
-----------------------------
-
-.. list-table::
-   :widths: 10 40 40
-   :header-rows: 1
-   :align: left
-
-   * - **Week**
-     - **Topics**
-     - **Deliverables**
-
-   * - **1**
-     - Introduction to automated driving systems, CARLA environment setup, and ROS 2 integration
-     - CARLA setup; project framework assigned
-   * - **2**
-     - Sensor technologies and data acquisition (LiDAR, camera, RADAR, GNSS)
-     - Assignment #1 released
-   * - **3–4**
-     - Perception for autonomous vehicles: feature extraction, object detection, semantic segmentation
-     - Quiz #1; Assignment #1 due
-   * - **5**
-     - Multi-sensor fusion and Kalman filtering for perception refinement
-     - Quiz #2; Assignment #2 released
-   * - **7–8**
-     - Localization and SLAM for on-road vehicles
-     - Assignment #2 due; Assignment #3 released
-   * - **9–10**
-     - Motion planning and trajectory optimization
-     - Quiz #3; Assignment #3 due; Assignment #4 released
-   * - **11–12**
-     - AI-driven decision-making, rule-based control, and behavior planning
-     - Quiz #4; Assignment #4 due
-   * - **13**
-     - System integration, testing, and real-time pipeline validation
-     - Quiz #5; final project check-in
-   * - **14**
-     - Final project presentations and discussion of evaluation metrics
-     - Final project submission and written report due
-
 .. toctree::
    :maxdepth: 2
    :titlesonly:
 
    assignments
+   lectures
 

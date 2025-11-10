@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="prev" title="Assignments" href="../assignments.html">
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Lectures" href="../lectures.html"><link rel="prev" title="Assignments" href="../assignments.html">
         <link rel="prefetch" href="../_static/enpm818Z-light.png" as="image">
         <link rel="prefetch" href="../_static/enpm818Z-dark.png" as="image">
 
@@ -204,6 +204,13 @@
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Assignment 2</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures.html">Lectures</a><input aria-label="Toggle navigation of Lectures" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lectures/lecture4.html">L4: Prediction and Behavior Forecasting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lectures/lecture5.html">L5: Vehicle Control and Actuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lectures/lecture6.html">L6: Decision Making and Behavior Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lectures/lecture7.html">L7: System Integration, Validation, and Future Directions</a></li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -271,6 +278,15 @@
 <dd class="field-odd"><p>Python (ROS 2, Open3D)</p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Provided resource:</p>
+<ul class="simple">
+<li><p>Demonstration of the output: <a class="reference external" href="https://drive.google.com/file/d/1iegtrsupj4XY0SIrvhmpgWKO9CifDmY9/view?usp=sharing">location</a>.</p></li>
+<li><p>Two pre-recorded bag files: <a class="reference external" href="https://drive.google.com/drive/folders/1ni7jXjCE8NncyLBbYpta3CpqVkbWhFDU?usp=sharing">location</a>.</p></li>
+<li><p>Starter package: <a class="reference external" href="https://github.com/zeidk/enpm818Z-fall-2025/tree/main/rwa2_starter">location</a>.</p></li>
+</ul>
+</div>
 <section id="objective">
 <h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">¶</a></h2>
 <p>Build a simplified <strong>LiDAR odometry pipeline</strong> that estimates vehicle trajectory from raw point cloud data. You will implement two core concepts of modern SLAM systems:</p>
@@ -279,10 +295,6 @@
 <li><p><strong>Local Map Management</strong> – Maintain a sliding window of recent keyframes as the registration reference</p></li>
 </ul>
 <p>You will be provided with helper utilities and a complete starter package. Your task is to implement the <strong>core SLAM logic</strong> in two ROS 2 nodes.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>See <a class="reference external" href="https://drive.google.com/file/d/1iegtrsupj4XY0SIrvhmpgWKO9CifDmY9/view?usp=sharing">demo</a>.</p>
-</div>
 </section>
 <section id="background">
 <h2>2. Background<a class="headerlink" href="#background" title="Link to this heading">¶</a></h2>
@@ -338,10 +350,6 @@
 </section>
 <section id="ros-2-bag-files-provided">
 <h3>ROS 2 Bag Files Provided<a class="headerlink" href="#ros-2-bag-files-provided" title="Link to this heading">¶</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Two pre-recorded bag files are provided to you: <a class="reference external" href="https://drive.google.com/drive/folders/1ni7jXjCE8NncyLBbYpta3CpqVkbWhFDU?usp=sharing">location</a>.</p>
-</div>
 <ol class="arabic simple">
 <li><p><strong>Development Dataset</strong> (<code class="docutils literal notranslate"><span class="pre">kitti_00_dev</span></code>) — First 1,000 frames</p>
 <ul class="simple">
@@ -1139,7 +1147,15 @@ rviz2<span class="w"> </span>-d<span class="w"> </span>src/slam_frontend/rviz/rw
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="../lectures.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Lectures</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="../assignments.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
