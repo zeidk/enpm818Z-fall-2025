@@ -1,0 +1,179 @@
+{
+  "configById": {
+    "Plot!2n5vmrp": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/detections/count.data",
+          "enabled": true,
+          "color": "#4e98e2"
+        }
+      ],
+      "showXAxisLabels": true,
+      "showYAxisLabels": true,
+      "showLegend": true,
+      "legendDisplay": "floating",
+      "showPlotValuesInLegend": false,
+      "isSynced": true,
+      "xAxisVal": "timestamp",
+      "sidebarDimension": 240,
+      "foxglovePanelTitle": "Detections per frame",
+      "yAxisLabel": "Detections per frame",
+      "xAxisLabel": "time"
+    },
+    "Plot!jttui2": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/detections/inference_time.data",
+          "enabled": true,
+          "color": "#4e98e2",
+          "label": ""
+        }
+      ],
+      "showXAxisLabels": true,
+      "showYAxisLabels": true,
+      "showLegend": true,
+      "legendDisplay": "floating",
+      "showPlotValuesInLegend": false,
+      "isSynced": true,
+      "xAxisVal": "timestamp",
+      "sidebarDimension": 240,
+      "xAxisLabel": "time",
+      "yAxisLabel": "Processing Time",
+      "foxglovePanelTitle": "Processing Time"
+    },
+    "Plot!97tcsn": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/detections/fps.data",
+          "enabled": true,
+          "color": "#4e98e2",
+          "label": ""
+        }
+      ],
+      "showXAxisLabels": true,
+      "showYAxisLabels": true,
+      "showLegend": true,
+      "legendDisplay": "floating",
+      "showPlotValuesInLegend": false,
+      "isSynced": true,
+      "xAxisVal": "timestamp",
+      "sidebarDimension": 240,
+      "yAxisLabel": "FPS",
+      "xAxisLabel": "time",
+      "foxglovePanelTitle": "Current FPS"
+    },
+    "Image!je0klj": {
+      "cameraState": {
+        "distance": 20,
+        "perspective": true,
+        "phi": 60,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 45,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "imageMode": {
+        "imageTopic": "/detections/image"
+      }
+    },
+    "Image!1vw4tk5": {
+      "cameraState": {
+        "distance": 20,
+        "perspective": true,
+        "phi": 60,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 45,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "imageMode": {
+        "imageTopic": "/kitti/camera/image"
+      }
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": {
+    "direction": "row",
+    "first": {
+      "first": {
+        "first": "Plot!2n5vmrp",
+        "second": "Plot!jttui2",
+        "direction": "column"
+      },
+      "second": "Plot!97tcsn",
+      "direction": "column"
+    },
+    "second": {
+      "direction": "row",
+      "first": "Image!je0klj",
+      "second": "Image!1vw4tk5"
+    }
+  }
+}

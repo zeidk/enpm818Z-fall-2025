@@ -1,0 +1,18 @@
+# Python requirements for YOLO Detector ROS 2 package
+
+# Core dependencies
+ultralytics>=8.0.0
+opencv-python>=4.5.0
+numpy>=1.19.0
+
+# Optional but recommended
+torch>=2.0.0  # For GPU acceleration
+torchvision>=0.15.0
+
+# For tracking extensions
+filterpy>=1.4.5  # Kalman filtering
+scipy>=1.7.0  # Hungarian algorithm
+
+# For bag creation
+rclpy
+cv-bridge

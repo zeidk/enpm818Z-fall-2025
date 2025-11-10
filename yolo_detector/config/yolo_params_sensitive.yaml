@@ -1,0 +1,21 @@
+# YOLO Detector Parameters - SENSITIVE Configuration
+# Lower thresholds to detect more objects (may increase false positives)
+# Place this file in: ~/demo_workspace/src/yolo_detector/config/yolo_params_sensitive.yaml
+
+yolo_detector:
+  ros__parameters:
+    # Model Configuration
+    model_path: "yolov8s.pt"
+    
+    # Detection Thresholds - Very sensitive
+    conf_threshold: 0.25      # Lower threshold = more detections
+    iou_threshold: 0.4        # Lower NMS threshold
+    
+    # Topic Configuration
+    image_topic: "/kitti/camera/image"
+    
+    # Detection Limits
+    max_det: 500
+    
+    # Device Configuration
+    device: ""

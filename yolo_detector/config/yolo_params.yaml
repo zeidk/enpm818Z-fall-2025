@@ -1,0 +1,65 @@
+# YOLO Detector Parameters
+# Place this file in: ~/demo_workspace/src/yolo_detector/config/yolo_params.yaml
+
+yolo_detector:
+  ros__parameters:
+    # Model Configuration
+    model_path: "/home/zeidk/workspace/lecture3_ws/src/yolo_detector/config/yolov8n.pt"  # Options: yolov8n.pt, yolov8s.pt, yolov8m.pt, yolov8l.pt, yolov8x.pt
+    
+    # Detection Thresholds
+    conf_threshold: 0.5       # Confidence threshold (0.0 - 1.0)
+    iou_threshold: 0.45       # IoU threshold for NMS (0.0 - 1.0)
+    
+    # Topic Configuration
+    image_topic: "/kitti/camera/image"  # Input image topic
+    
+    # Detection Limits
+    max_det: 300              # Maximum number of detections per image
+    
+    # Device Configuration
+    device: ""                # Device for inference: "" (auto), "cpu", "cuda:0", etc.
+
+
+    # YOLO Detector Parameters - SENSITIVE Configuration
+# Lower thresholds to detect more objects (may increase false positives)
+# Place this file in: ~/demo_workspace/src/yolo_detector/config/yolo_params_sensitive.yaml
+
+# yolo_detector:
+#   ros__parameters:
+#     # Model Configuration
+#     model_path: "yolov8s.pt"
+    
+#     # Detection Thresholds - Very sensitive
+#     conf_threshold: 0.25      # Lower threshold = more detections
+#     iou_threshold: 0.4        # Lower NMS threshold
+    
+#     # Topic Configuration
+#     image_topic: "/kitti/camera/image"
+    
+#     # Detection Limits
+#     max_det: 500
+    
+#     # Device Configuration
+#     device: ""
+
+# YOLO Detector Parameters - CONSERVATIVE Configuration
+# Higher thresholds for fewer but more confident detections
+# Place this file in: ~/demo_workspace/src/yolo_detector/config/yolo_params_conservative.yaml
+
+# yolo_detector:
+#   ros__parameters:
+#     # Model Configuration
+#     model_path: "yolov8s.pt"
+    
+#     # Detection Thresholds - Very conservative
+#     conf_threshold: 0.7       # Higher threshold = fewer, more confident detections
+#     iou_threshold: 0.5
+    
+#     # Topic Configuration
+#     image_topic: "/kitti/camera/image"
+    
+#     # Detection Limits
+#     max_det: 200
+    
+#     # Device Configuration
+#     device: ""
