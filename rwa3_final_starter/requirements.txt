@@ -1,0 +1,22 @@
+# ENPM818Z Final Project Dependencies
+# zeidk
+
+# Core dependencies
+numpy>=1.21.0
+scipy>=1.7.0
+PyYAML>=6.0
+
+# Visualization
+matplotlib>=3.5.0
+pygame>=2.1.0
+
+# CARLA Python API
+# Note: CARLA egg file must be added to PYTHONPATH separately
+# See README.md for instructions
+
+# Testing
+pytest>=7.0.0
+
+# Optional: Jupyter for experimentation
+jupyter>=1.0.0
+ipywidgets>=8.0.0

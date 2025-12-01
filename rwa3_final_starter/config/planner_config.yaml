@@ -1,0 +1,143 @@
+# ENPM818Z Final Project Configuration
+# Planner parameters for behavioral and trajectory planning
+
+# CARLA connection settings
+carla:
+  host: "localhost"
+  port: 2000
+  timeout: 10.0
+  # Highway map - Town04 has highways
+  map: "Town04"
+  
+# Vehicle settings
+vehicle:
+  blueprint: "vehicle.tesla.model3"
+  wheelbase: 2.875  # meters (for bicycle model)
+
+# Behavioral Planner Configuration
+behavioral_planner:
+  # Cruising speed when lane keeping
+  target_speed: 25.0  # m/s (~90 km/h)
+  
+  # Minimum distance to maintain behind lead vehicle
+  safe_follow_distance: 20.0  # meters
+  
+  # Minimum gap required in target lane for lane change
+  lane_change_min_gap: 25.0  # meters
+  
+  # Distance to stop before a blocking obstacle
+  stop_distance: 10.0  # meters
+  
+  # Speed threshold to consider a vehicle as "slow"
+  slow_vehicle_threshold: 18.0  # m/s
+  
+  # Timeout for lane change preparation
+  lane_change_prep_timeout: 5.0  # seconds
+
+# Trajectory Planner Configuration
+trajectory_planner:
+  # Vehicle constraints
+  max_speed: 30.0       # m/s (~108 km/h)
+  min_speed: 0.0        # m/s
+  max_accel: 3.0        # m/s^2 (comfortable acceleration)
+  max_decel: -6.0       # m/s^2 (comfortable braking)
+  emergency_decel: -8.0 # m/s^2 (emergency braking)
+  max_curvature: 0.2    # 1/m (minimum turning radius = 5m)
+  max_lateral_accel: 3.0  # m/s^2 (comfort limit)
+  max_jerk: 2.0         # m/s^3 (comfort limit)
+  
+  # Planning parameters
+  planning_horizon: 5.0  # seconds
+  dt: 0.1               # trajectory timestep (seconds)
+  
+  # Sampling parameters
+  num_d_samples: 5      # lateral position samples
+  num_v_samples: 5      # velocity samples  
+  num_t_samples: 5      # duration samples
+  
+  # Sampling ranges
+  d_sample_range: 0.5   # meters (+/- from target)
+  v_sample_range: 2.0   # m/s (+/- from target)
+  t_sample_min: 3.0     # seconds (minimum maneuver time)
+  t_sample_max: 6.0     # seconds (maximum maneuver time)
+  
+  # Cost function weights
+  cost_weights:
+    jerk: 0.1
+    lateral_deviation: 1.0
+    speed_deviation: 1.0
+    time: 0.5
+    obstacle_proximity: 10.0
+  
+  # Collision checking
+  vehicle_length: 4.5   # meters
+  vehicle_width: 2.0    # meters
+  safety_margin: 1.0    # meters (added to vehicle dimensions)
+
+# Controller Configuration (PROVIDED - do not modify for grading)
+controller:
+  # Stanley lateral controller
+  stanley:
+    k_crosstrack: 2.5   # crosstrack error gain
+    k_heading: 1.0      # heading error gain (usually 1.0)
+    k_softness: 1.0     # softening factor for low speeds
+    max_steering: 0.5   # radians (~28 degrees)
+  
+  # PID longitudinal controller
+  pid:
+    kp: 1.0             # proportional gain
+    ki: 0.1             # integral gain
+    kd: 0.05            # derivative gain
+    max_throttle: 1.0   # [0, 1]
+    max_brake: 1.0      # [0, 1]
+  
+  # Control frequency
+  frequency: 50  # Hz
+
+# Perception Configuration (PROVIDED)
+perception:
+  sensor_range: 100.0   # meters
+  update_rate: 20       # Hz
+
+# Visualization Configuration
+visualization:
+  enabled: true
+  screen_width: 1280
+  screen_height: 720
+  trajectory_color: [0, 255, 0]      # green
+  planned_path_color: [255, 255, 0]  # yellow
+  obstacle_color: [255, 0, 0]        # red
+  ego_color: [0, 0, 255]             # blue
+
+# Scenario Configuration
+scenarios:
+  highway:
+    # Spawn location on Town04 highway
+    spawn_point:
+      x: 5.0
+      y: -150.0
+      z: 0.3
+      yaw: 90.0
+    
+    # Initial lane (0 = rightmost)
+    initial_lane: 1
+    
+    # Route (target lane sequence)
+    route: [1, 1, 0, 0]  # stay in lane 1, then change to lane 0
+    
+    # Scenario duration
+    max_duration: 120.0  # seconds
+    
+    # Success criteria
+    success_criteria:
+      max_lateral_deviation: 0.3    # meters
+      max_speed_deviation: 1.0      # m/s
+      min_following_distance: 15.0  # meters
+      max_lateral_accel: 3.0        # m/s^2
+      max_jerk: 2.5                 # m/s^3
+
+# Logging Configuration
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR
+  log_to_file: true
+  log_dir: "logs"
