@@ -1,0 +1,5 @@
+# Requirements for RWA3 - Behavioral Planning with Behavior Trees
+# Install with: pip install -r requirements.txt
+
+numpy>=1.20.0
+matplotlib>=3.5.0
